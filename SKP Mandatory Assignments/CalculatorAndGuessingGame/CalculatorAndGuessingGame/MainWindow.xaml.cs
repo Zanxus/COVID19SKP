@@ -24,5 +24,21 @@ namespace CalculatorAndGuessingGame
         {
             InitializeComponent();
         }
+        //Launches the GuessingGame Window
+        private void Button_Guessing_Game (object sender, RoutedEventArgs e)
+        {
+            GuessingGameWindow guessingGameWindow = new GuessingGameWindow();
+            guessingGameWindow.Show();
+            this.Close();
+
+        }
+        //Launches The Calculator Window
+        private void Button_Calculator(object sender, RoutedEventArgs e)
+        {
+            CalculatorWindow guessingGame = new CalculatorWindow();
+            guessingGame.Show();
+            this.Close();
+        }
+
     }
 }
