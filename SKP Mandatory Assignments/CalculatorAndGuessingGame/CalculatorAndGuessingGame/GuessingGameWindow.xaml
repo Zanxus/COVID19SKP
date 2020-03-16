@@ -8,6 +8,14 @@
         Title="GuessingGameWindow" Height="450" Width="800">
     <Grid>
         <Button Content="Back To Main Menu" HorizontalAlignment="Left" Margin="657,384,0,0" VerticalAlignment="Top" Width="111" Click="Button_Back"/>
+        <Label Content="Guessing Game" HorizontalAlignment="Left" Margin="23,23,0,0" VerticalAlignment="Top" Width="175" Height="42" FontSize="24"/>
+        <Label Content="Instructions:" HorizontalAlignment="Left" Margin="490,31,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="501,70,0,0" TextWrapping="Wrap" Text="Guess the number between 0-10 within 3 tries, the game will say if the guessed numbre is higher or lower. each right guess gives 1 point." VerticalAlignment="Top" Width="267"/>
+        <TextBox x:Name="GuessInput" HorizontalAlignment="Left" Height="23" Margin="23,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="OutputText" HorizontalAlignment="Left" Margin="23,144,0,0" VerticalAlignment="Top" Height="40" Width="120" FontSize="20"/>
+        <Button Content="Guess" HorizontalAlignment="Left" Margin="148,95,0,0" VerticalAlignment="Top" Width="70" Height="23" Click="Button_Guess"/>
+        <Label Content="Guesses:" HorizontalAlignment="Left" Margin="148,144,0,0" VerticalAlignment="Top" Height="33" Width="70"/>
+        <Label Content="{Binding Guesses}" HorizontalAlignment="Left" Margin="143,182,0,0" VerticalAlignment="Top" Width="55"/>
 
     </Grid>
 </Window>
