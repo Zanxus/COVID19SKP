@@ -22,6 +22,7 @@ namespace CalculatorAndGuessingGame
     //Uses INotifyPropertyChanged fire and event when a propertychanges
     public partial class GuessingGameWindow : Window, INotifyPropertyChanged
     {
+        Random random = new Random();
 
         int numberToGuess;
         //The Event that gets fired
@@ -44,7 +45,6 @@ namespace CalculatorAndGuessingGame
             //Initializes the number needed to be guessed aswell as number of tries
             Wins = 0;
             Guesses = 3;
-            Random random = new Random();
             numberToGuess = random.Next(0, 10);
 
             InitializeComponent();
@@ -72,11 +72,14 @@ namespace CalculatorAndGuessingGame
                 {
                     Wins++;
                     Guesses += 3;
+                    numberToGuess = random.Next(0, 10);
                 }
             }
             if (Guesses == 0)
             {
                 OutputText.Content = $"You Ran out of guesses and guessed {Wins} numbers correctly";
+                numberToGuess = random.Next(0, 10);
+                Guesses = 3;
             }
         }
 
