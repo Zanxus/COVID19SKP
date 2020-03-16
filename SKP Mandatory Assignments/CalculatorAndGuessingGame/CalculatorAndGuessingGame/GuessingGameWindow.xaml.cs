@@ -23,5 +23,13 @@ namespace CalculatorAndGuessingGame
         {
             InitializeComponent();
         }
+
+        //Adds Return fuctionality to the GuessingGameWindow
+        private void Button_Back(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            this.Close();
+            mainWindow.Show();
+        }
     }
 }

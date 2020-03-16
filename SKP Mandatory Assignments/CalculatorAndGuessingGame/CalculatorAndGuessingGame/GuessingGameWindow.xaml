@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="GuessingGameWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button Content="Back To Main Menu" HorizontalAlignment="Left" Margin="657,384,0,0" VerticalAlignment="Top" Width="111" Click="Button_Back"/>
+
     </Grid>
 </Window>
