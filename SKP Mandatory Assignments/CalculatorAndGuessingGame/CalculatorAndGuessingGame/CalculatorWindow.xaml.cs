@@ -19,6 +19,7 @@ namespace CalculatorAndGuessingGame
     /// </summary>
     public partial class CalculatorWindow : Window
     {
+        StringBuilder sb = new StringBuilder();
         public CalculatorWindow()
         {
             InitializeComponent();
@@ -27,9 +28,25 @@ namespace CalculatorAndGuessingGame
         //Adds Return fuctionality to the ClaculatorWindow
         private void Button_Back(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            this.Close();
-            mainWindow.Show();
+            OpenWindow(new MainWindow());
+        }
+
+        private void OpenWindow(Window window)
+        {
+            Close();
+            window.Show();
+        }
+        Eval
+        //Takes a string and splits it into more parts
+        private List<string> StringSpliter(string mathString)
+        {
+            return new List<string>();
+        }
+        //Turns a string into "Mathable functions"
+        private void StringEval(string mathString)
+        {
+
         }
     }
+
 }
