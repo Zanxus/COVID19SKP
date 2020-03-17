@@ -26,8 +26,6 @@ namespace CalculatorAndGuessingGame
 
         int numberToGuess;
         //The Event that gets fired
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private int guesses;
         //Uses OnPropertyChanged() to change data with the 
         public int Guesses
@@ -38,7 +36,9 @@ namespace CalculatorAndGuessingGame
             }
         }
         public int Wins { get; set; }
-        public int MyProperty { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public List<int> HighscoreTableContent { get; set; }
 
         public GuessingGameWindow()
         {
@@ -48,27 +48,36 @@ namespace CalculatorAndGuessingGame
             numberToGuess = random.Next(0, 10);
 
             InitializeComponent();
-
             GuessAmountLabel.DataContext = this;
         }
 
         //Adds Return fuctionality to the GuessingGameWindow
         private void Button_Back(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            this.Close();
-            mainWindow.Show();
+            OpenWindow(new MainWindow());
         }
 
         //Handels the Guess logic
         private void Button_Guess(object sender, RoutedEventArgs e)
         {
+            GameLogic();
+        }
 
-            if(int.TryParse(GuessInput.Text,out int input) && Guesses > 0)
+        //Updates the value
+        private void OnPropertyChanged()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("guesses"));
+        }
+
+
+        //Contain the main GuessingGame Logic
+        private void GameLogic()
+        {
+            if (int.TryParse(GuessInput.Text, out int input) && Guesses > 0)
             {
                 Guesses--;
                 OutputText.Content = (numberToGuess > input) ? "Higher" : (numberToGuess < input) ? "Lower" : "Correct";
-                if((string)OutputText.Content == "Correct")
+                if ((string)OutputText.Content == "Correct")
                 {
                     Wins++;
                     Guesses += 3;
@@ -80,13 +89,15 @@ namespace CalculatorAndGuessingGame
                 OutputText.Content = $"You Ran out of guesses and guessed {Wins} numbers correctly";
                 numberToGuess = random.Next(0, 10);
                 Guesses = 3;
+
             }
         }
 
-        //Updates the value
-        private void OnPropertyChanged()
+        //Small method to open and close windows
+        private void OpenWindow(Window window)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("guesses"));
+            Close();
+            window.Show();
         }
     }
 }
