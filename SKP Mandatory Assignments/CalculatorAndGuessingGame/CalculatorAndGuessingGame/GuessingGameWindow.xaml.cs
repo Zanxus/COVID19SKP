@@ -25,7 +25,7 @@ namespace CalculatorAndGuessingGame
         Random random = new Random();
 
         int numberToGuess;
-        //The Event that gets fired
+
         private int guesses;
         //Uses OnPropertyChanged() to change data with the 
         public int Guesses
@@ -36,18 +36,20 @@ namespace CalculatorAndGuessingGame
             }
         }
         public int Wins { get; set; }
-
+        //The Event that gets fired
         public event PropertyChangedEventHandler PropertyChanged;
-        public List<int> HighscoreTableContent { get; set; }
+        public List<Hiscore> HighscoreTableContent { get; set; }
 
         public GuessingGameWindow()
         {
             //Initializes the number needed to be guessed aswell as number of tries
+            HighscoreTableContent = new List<Hiscore>();
             Wins = 0;
             Guesses = 3;
             numberToGuess = random.Next(0, 10);
 
             InitializeComponent();
+            HiscoreListVeiw.ItemsSource = HighscoreTableContent;
             GuessAmountLabel.DataContext = this;
         }
 
@@ -86,6 +88,7 @@ namespace CalculatorAndGuessingGame
             }
             if (Guesses == 0)
             {
+                HighscoreTableContent.Add(new Hiscore(HiscoreName.Text, Wins));
                 OutputText.Content = $"You Ran out of guesses and guessed {Wins} numbers correctly";
                 numberToGuess = random.Next(0, 10);
                 Guesses = 3;

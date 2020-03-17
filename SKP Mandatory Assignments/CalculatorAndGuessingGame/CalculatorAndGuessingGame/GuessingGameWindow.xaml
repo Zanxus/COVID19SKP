@@ -5,19 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorAndGuessingGame"
         mc:Ignorable="d"
-        Title="GuessingGameWindow" Height="270.492" Width="800">
+        Title="GuessingGameWindow" Height="270.492" Width="923.525">
     <Grid Margin="0,0,0,26">
         <Button Content="Back To Main Menu" HorizontalAlignment="Left" Margin="657,384,0,0" VerticalAlignment="Top" Width="111" Click="Button_Back"/>
         <Label Content="Guessing Game" HorizontalAlignment="Left" Margin="23,23,0,0" VerticalAlignment="Top" Width="175" Height="42" FontSize="24"/>
-        <Label Content="Instructions:" HorizontalAlignment="Left" Margin="490,31,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBlock HorizontalAlignment="Left" Margin="501,70,0,0" TextWrapping="Wrap" 
-         Text="Guess the number between 0-10 within 3 tries, the game will say if the guessed numbre is higher or lower. each right guess gives 1 point. Guesses Carry Over if you guess correctly automaticly gives you a new number to guess if you use all your guesses the game will reset"
+        <Label Content="Instructions:" HorizontalAlignment="Left" Margin="628,31,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="639,70,0,0" TextWrapping="Wrap" 
+         Text="Guess the number between 0-10 within 3 tries, the game will say if you need to go higher or lower. each right guess gives 1 point. Guesses carry over. if you guess correctly the game automaticly gives you a new number to guess if you use all your guesses the game will reset. If you want to add your name to the highscore please enter a name in the name box."
          VerticalAlignment="Top" Width="267"/>
         <TextBox x:Name="GuessInput" HorizontalAlignment="Left" Height="23" Margin="23,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="OutputText" HorizontalAlignment="Left" Margin="23,144,0,0" VerticalAlignment="Top" Height="40" Width="390" FontSize="18"/>
         <Button Content="Guess" HorizontalAlignment="Left" Margin="148,95,0,0" VerticalAlignment="Top" Width="70" Height="23" Click="Button_Guess"/>
         <Label Content="Guesses:" HorizontalAlignment="Left" Margin="23,62,0,0" VerticalAlignment="Top" Height="33" Width="70"/>
         <Label x:Name="GuessAmountLabel" Content="{Binding Guesses}" HorizontalAlignment="Left" Margin="93,70,0,0" VerticalAlignment="Top" Width="50"/>
+        <ListView x:Name="HiscoreListVeiw" HorizontalAlignment="Left" Height="180" Margin="451,23,0,0" VerticalAlignment="Top" Width="155">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Hiscore" HorizontalAlignment="Left" Margin="451,0,0,0" VerticalAlignment="Top" Width="155"/>
+        <TextBox x:Name="HiscoreName" HorizontalAlignment="Left" Height="23" Margin="326,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="326,23,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
