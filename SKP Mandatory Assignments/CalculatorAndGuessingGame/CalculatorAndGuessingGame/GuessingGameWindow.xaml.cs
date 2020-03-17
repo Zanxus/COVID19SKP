@@ -96,8 +96,7 @@ namespace CalculatorAndGuessingGame
             }
             if (Guesses == 0)
             {
-                HighscoreTableContent.Add(new Hiscore(HiscoreName.Text, Wins));
-                JSONHandler.Exporter(HighscoreTableContent);
+                AddHiscore();
                 OutputText.Content = $"You Ran out of guesses and guessed {Wins} numbers correctly";
                 numberToGuess = random.Next(0, 10);
                 Guesses = 3;
@@ -126,9 +125,17 @@ namespace CalculatorAndGuessingGame
                     if (!HiscoreListVeiw.ItemsSource.Equals(temp))
                     {
                         HiscoreListVeiw.ItemsSource = temp;
+                        JSONHandler.Exporter(HighscoreTableContent);
                     }
                 });
 
+            }
+        }
+        private void AddHiscore()
+        {
+            if (!HiscoreName.Text.Equals(""))
+            {
+                HighscoreTableContent.Add(new Hiscore(HiscoreName.Text, Wins));
             }
         }
     }
