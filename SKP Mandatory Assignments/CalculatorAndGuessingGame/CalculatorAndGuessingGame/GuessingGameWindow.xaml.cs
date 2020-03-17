@@ -75,7 +75,7 @@ namespace CalculatorAndGuessingGame
         private void Button_Guess(object sender, RoutedEventArgs e)
         {
             //ensures that the player has a name
-            if (HiscoreName.Text.Equals(""))
+            if (!HiscoreName.Text.Equals(""))
             {
                 GameLogic();
             }
