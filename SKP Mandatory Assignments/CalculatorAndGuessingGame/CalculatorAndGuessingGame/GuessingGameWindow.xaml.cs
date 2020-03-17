@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -38,12 +39,12 @@ namespace CalculatorAndGuessingGame
         public int Wins { get; set; }
         //The Event that gets fired
         public event PropertyChangedEventHandler PropertyChanged;
-        public List<Hiscore> HighscoreTableContent { get; set; }
+        public static ObservableCollection<Hiscore> HighscoreTableContent { get; set; }
 
         public GuessingGameWindow()
         {
             //Initializes the number needed to be guessed aswell as number of tries
-            HighscoreTableContent = new List<Hiscore>();
+            HighscoreTableContent = new ObservableCollection<Hiscore>();
             Wins = 0;
             Guesses = 3;
             numberToGuess = random.Next(0, 10);
