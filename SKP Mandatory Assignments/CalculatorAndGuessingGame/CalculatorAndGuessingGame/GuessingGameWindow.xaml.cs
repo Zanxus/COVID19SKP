@@ -52,12 +52,16 @@ namespace CalculatorAndGuessingGame
             numberToGuess = random.Next(0, 10);
 
             InitializeComponent();
-
+            //subscribes the BackgroundWorker_Dowork to the DoWork event
             worker.DoWork += BackgroundWorker_DoWork;
+            //Triggers the DoWork Event with every 1000 miliseconds
             worker.RunWorkerAsync(1000);
 
+            //assigns the ListVeiw the items it needs to show
             HiscoreListVeiw.ItemsSource = HighscoreTableContent;
+            //Enables Databinding
             GuessAmountLabel.DataContext = this;
+            //Inports the Hiscore from a JSON file
             HighscoreTableContent = JSONHandler.Importer();
         }
 
@@ -70,10 +74,19 @@ namespace CalculatorAndGuessingGame
         //Handels the Guess logic
         private void Button_Guess(object sender, RoutedEventArgs e)
         {
-            GameLogic();
+            //ensures that the player has a name
+            if (HiscoreName.Text.Equals(""))
+            {
+                GameLogic();
+            }
+            else
+            {
+                OutputText.Content = "Please input a name for the hiscore";
+            }
+            
         }
 
-        //Updates the value
+        //Updates the guesses field
         private void OnPropertyChanged()
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("guesses"));
@@ -83,10 +96,13 @@ namespace CalculatorAndGuessingGame
         //Contain the main GuessingGame Logic
         private void GameLogic()
         {
+            //does input error checking, like input range and input type
             if (int.TryParse(GuessInput.Text, out int input) && Guesses > 0 && input <= 10 && input >= 0)
             {
                 Guesses--;
+                //checks the input against the number that needs to be guessed
                 OutputText.Content = (numberToGuess > input) ? "Higher" : (numberToGuess < input) ? "Lower" : "Correct";
+                //awards points and carry over guesses and assigns new number
                 if ((string)OutputText.Content == "Correct")
                 {
                     Wins++;
@@ -94,6 +110,7 @@ namespace CalculatorAndGuessingGame
                     numberToGuess = random.Next(0, 10);
                 }
             }
+            //checks if you lost the game by your number of guesses, if it is lost the game is then reset
             if (Guesses == 0)
             {
                 AddHiscore();
