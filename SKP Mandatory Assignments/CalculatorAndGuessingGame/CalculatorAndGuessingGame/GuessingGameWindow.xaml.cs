@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,6 +25,7 @@ namespace CalculatorAndGuessingGame
     public partial class GuessingGameWindow : Window, INotifyPropertyChanged
     {
         Random random = new Random();
+        BackgroundWorker worker = new BackgroundWorker();
 
         int numberToGuess;
 
@@ -39,19 +41,24 @@ namespace CalculatorAndGuessingGame
         public int Wins { get; set; }
         //The Event that gets fired
         public event PropertyChangedEventHandler PropertyChanged;
-        public static ObservableCollection<Hiscore> HighscoreTableContent { get; set; }
+        public static ObservableCollection<Hiscore> HighscoreTableContent = new ObservableCollection<Hiscore>();
 
         public GuessingGameWindow()
         {
             //Initializes the number needed to be guessed aswell as number of tries
-            HighscoreTableContent = new ObservableCollection<Hiscore>();
+            
             Wins = 0;
             Guesses = 3;
             numberToGuess = random.Next(0, 10);
 
             InitializeComponent();
+
+            worker.DoWork += BackgroundWorker_DoWork;
+            worker.RunWorkerAsync(1000);
+
             HiscoreListVeiw.ItemsSource = HighscoreTableContent;
             GuessAmountLabel.DataContext = this;
+            HighscoreTableContent = JSONHandler.Importer();
         }
 
         //Adds Return fuctionality to the GuessingGameWindow
@@ -76,7 +83,7 @@ namespace CalculatorAndGuessingGame
         //Contain the main GuessingGame Logic
         private void GameLogic()
         {
-            if (int.TryParse(GuessInput.Text, out int input) && Guesses > 0)
+            if (int.TryParse(GuessInput.Text, out int input) && Guesses > 0 && input <= 10 && input >= 0)
             {
                 Guesses--;
                 OutputText.Content = (numberToGuess > input) ? "Higher" : (numberToGuess < input) ? "Lower" : "Correct";
@@ -90,9 +97,11 @@ namespace CalculatorAndGuessingGame
             if (Guesses == 0)
             {
                 HighscoreTableContent.Add(new Hiscore(HiscoreName.Text, Wins));
+                JSONHandler.Exporter(HighscoreTableContent);
                 OutputText.Content = $"You Ran out of guesses and guessed {Wins} numbers correctly";
                 numberToGuess = random.Next(0, 10);
                 Guesses = 3;
+                Wins = 0;
 
             }
         }
@@ -102,6 +111,25 @@ namespace CalculatorAndGuessingGame
         {
             Close();
             window.Show();
+        }
+
+        //Updates the Hiscore every x milliseconds
+        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            int waitTime = (int)e.Argument;
+            while (true)
+            {
+                Thread.Sleep(waitTime);
+                ObservableCollection<Hiscore> temp = JSONHandler.Importer();
+                App.Current.Dispatcher.Invoke(delegate
+                {
+                    if (!HiscoreListVeiw.ItemsSource.Equals(temp))
+                    {
+                        HiscoreListVeiw.ItemsSource = temp;
+                    }
+                });
+
+            }
         }
     }
 }

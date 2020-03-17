@@ -11,7 +11,7 @@ namespace CalculatorAndGuessingGame
 {
     static class JSONHandler
     {
-        static readonly string PATH = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.Parent.Parent.FullName, "Hiscores_JSON.txt");
+        static readonly string PATH = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Hiscores_JSON.txt");
         public static void Exporter(ObservableCollection<Hiscore> hiscores)
         {
             File.WriteAllText(PATH, JsonConvert.SerializeObject(hiscores));

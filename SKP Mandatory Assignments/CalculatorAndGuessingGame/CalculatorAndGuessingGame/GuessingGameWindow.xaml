@@ -17,11 +17,12 @@
         <Label x:Name="OutputText" HorizontalAlignment="Left" Margin="23,144,0,0" VerticalAlignment="Top" Height="40" Width="390" FontSize="18"/>
         <Button Content="Guess" HorizontalAlignment="Left" Margin="148,95,0,0" VerticalAlignment="Top" Width="70" Height="23" Click="Button_Guess"/>
         <Label Content="Guesses:" HorizontalAlignment="Left" Margin="23,62,0,0" VerticalAlignment="Top" Height="33" Width="70"/>
-        <Label x:Name="GuessAmountLabel" Content="{Binding Guesses}" HorizontalAlignment="Left" Margin="93,70,0,0" VerticalAlignment="Top" Width="50"/>
+        <Label x:Name="GuessAmountLabel" Content="{Binding Guesses}" HorizontalAlignment="Left" Margin="93,62,0,0" VerticalAlignment="Top" Width="50" Height="28"/>
         <ListView x:Name="HiscoreListVeiw" HorizontalAlignment="Left" Height="180" Margin="451,23,0,0" VerticalAlignment="Top" Width="155">
             <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
+                <GridView x:Name="ListGrid">
+                    <GridViewColumn Header="Name" Width="50" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Score" Width="90" DisplayMemberBinding="{Binding Score}" />
                 </GridView>
             </ListView.View>
         </ListView>
