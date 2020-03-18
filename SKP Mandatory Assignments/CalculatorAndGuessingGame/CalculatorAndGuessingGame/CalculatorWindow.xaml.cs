@@ -26,9 +26,10 @@ namespace CalculatorAndGuessingGame
         public CalculatorWindow()
         {
             worker.DoWork += BackgroundWorker_DoWork;
-            worker.RunWorkerAsync(1000);
+            worker.RunWorkerAsync(100);
 
             InitializeComponent();
+            DataContext = this;
         }
 
         //Adds Return fuctionality to the ClaculatorWindow
@@ -46,12 +47,33 @@ namespace CalculatorAndGuessingGame
         //Takes a string and splits it into more parts
         private List<string> StringSpliter(string mathString)
         {
-            return new List<string>();
+            List<string> mathList = new List<string>();
+            string temp = "";
+            foreach (char element in mathString)
+            {
+                if (char.IsDigit(element))
+                {
+                    temp = temp + element;
+                }
+                else
+                {
+                    mathList.Add(temp);
+                    mathList.Add(element.ToString());
+                    temp = "";
+                }
+
+            }
+
+            return mathList;
         }
         //Turns a string into "Mathable functions"
         private void StringEval(string mathString)
         {
-
+            switch (mathString)
+            {
+                default:
+                    break;
+            }
         }
         //Finds the content of pressed button and adds it to the string
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -59,6 +81,11 @@ namespace CalculatorAndGuessingGame
             Button b = (Button)e.Source;
             sb.Append(b.Content);
 
+        }
+
+        private void Eval_Button_Click(object sender, RoutedEventArgs e)
+        {
+            List<string> splitstring = StringSpliter(sb.ToString());
         }
 
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
