@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,9 +21,13 @@ namespace CalculatorAndGuessingGame
     /// </summary>
     public partial class CalculatorWindow : Window
     {
+        BackgroundWorker worker = new BackgroundWorker();
         StringBuilder sb = new StringBuilder();
         public CalculatorWindow()
         {
+            worker.DoWork += BackgroundWorker_DoWork;
+            worker.RunWorkerAsync(1000);
+
             InitializeComponent();
         }
 
@@ -36,7 +42,7 @@ namespace CalculatorAndGuessingGame
             Close();
             window.Show();
         }
-        Eval
+        
         //Takes a string and splits it into more parts
         private List<string> StringSpliter(string mathString)
         {
@@ -46,6 +52,28 @@ namespace CalculatorAndGuessingGame
         private void StringEval(string mathString)
         {
 
+        }
+        //Finds the content of pressed button and adds it to the string
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = (Button)e.Source;
+            sb.Append(b.Content);
+
+        }
+
+        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            int waitTime = (int)e.Argument;
+            while (true)
+            {
+                Thread.Sleep(waitTime);
+                App.Current.Dispatcher.Invoke(delegate
+                {
+                    Screen.Text = sb.ToString();
+                    
+                });
+
+            }
         }
     }
 
