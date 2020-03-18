@@ -44,37 +44,6 @@ namespace CalculatorAndGuessingGame
             window.Show();
         }
         
-        //Takes a string and splits it into more parts
-        private List<string> StringSpliter(string mathString)
-        {
-            List<string> mathList = new List<string>();
-            string temp = "";
-            foreach (char element in mathString)
-            {
-                if (char.IsDigit(element))
-                {
-                    temp = temp + element;
-                }
-                else
-                {
-                    mathList.Add(temp);
-                    mathList.Add(element.ToString());
-                    temp = "";
-                }
-
-            }
-
-            return mathList;
-        }
-        //Turns a string into "Mathable functions"
-        private void StringEval(string mathString)
-        {
-            switch (mathString)
-            {
-                default:
-                    break;
-            }
-        }
         //Finds the content of pressed button and adds it to the string
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -85,7 +54,15 @@ namespace CalculatorAndGuessingGame
 
         private void Eval_Button_Click(object sender, RoutedEventArgs e)
         {
-            List<string> splitstring = StringSpliter(sb.ToString());
+            string temp = "";
+            System.Data.DataTable table = new System.Data.DataTable();
+            if(sb.ToString() != "")
+            {
+                temp = Convert.ToDouble(table.Compute(sb.ToString(), String.Empty)).ToString();
+            }
+
+            sb.Clear();
+            sb.Append(temp);
         }
 
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -101,6 +78,11 @@ namespace CalculatorAndGuessingGame
                 });
 
             }
+        }
+
+        private void Clear_Button_Click(object sender, RoutedEventArgs e)
+        {
+            sb.Clear();
         }
     }
 
