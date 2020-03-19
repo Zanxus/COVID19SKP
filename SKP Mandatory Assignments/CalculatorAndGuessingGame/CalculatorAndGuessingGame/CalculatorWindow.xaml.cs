@@ -114,10 +114,21 @@ namespace CalculatorAndGuessingGame
         {
             switch (layoutstring)
             {
+                case "Circle":
+                    SetupFrame.Navigate(new Circle());
+                    break;
+                case "Traoezoid":
+                    SetupFrame.Navigate(new Square());
+                    break;
+                case "Cone":
+                    SetupFrame.Navigate(new Square());
+                    break;
+                case "Polygone":
+                    SetupFrame.Navigate(new Square());
+                    break;
                 case "Square":
                     SetupFrame.Navigate(new Square());
                     break;
-
                 default:
                     break;
             }
