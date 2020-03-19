@@ -19,3 +19,5 @@ C:\Users\Zanxus\Documents\repo\COVID19SKP\SKP Mandatory Assignments\CalculatorAn
 C:\Users\Zanxus\Documents\repo\COVID19SKP\SKP Mandatory Assignments\CalculatorAndGuessingGame\CalculatorAndGuessingGame\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Zanxus\Documents\repo\COVID19SKP\SKP Mandatory Assignments\CalculatorAndGuessingGame\CalculatorAndGuessingGame\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Zanxus\Documents\repo\COVID19SKP\SKP Mandatory Assignments\CalculatorAndGuessingGame\CalculatorAndGuessingGame\obj\Debug\CalculatorAndGuessingGame.csproj.CopyComplete
+C:\Users\Zanxus\Documents\repo\COVID19SKP\SKP Mandatory Assignments\CalculatorAndGuessingGame\CalculatorAndGuessingGame\obj\Debug\Square.g.cs
+C:\Users\Zanxus\Documents\repo\COVID19SKP\SKP Mandatory Assignments\CalculatorAndGuessingGame\CalculatorAndGuessingGame\obj\Debug\Square.baml

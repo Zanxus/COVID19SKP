@@ -102,17 +102,26 @@ namespace CalculatorAndGuessingGame
         {
             sb.Clear();
         }
-
+        //uses a comboBox to pass a string to setup method.
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox cb = (ComboBox)e.Source;
             Setup(cb.SelectedItem.ToString());
         }
 
+        //Creates a page and navigate to it using the layoutstring.
         private void Setup(string layoutstring)
         {
-            TextBox tb = new TextBox();
-            
+            switch (layoutstring)
+            {
+                case "Square":
+                    SetupFrame.Navigate(new Square());
+                    break;
+
+                default:
+                    break;
+            }
+
         }
 
         
