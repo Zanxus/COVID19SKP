@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
 
 namespace CalculatorAndGuessingGame
 {
@@ -23,12 +24,22 @@ namespace CalculatorAndGuessingGame
     {
         BackgroundWorker worker = new BackgroundWorker();
         StringBuilder sb = new StringBuilder();
+        string[] shapes = { "Circle", "Square", "Traoezoid", "Cone", "Polygone" };
+        
+        enum Shapes
+        {
+            Circle,Square,Traoezoid,Cone,Polygone
+        }
+
+        bool Expanded = false;
         public CalculatorWindow()
         {
+
             worker.DoWork += BackgroundWorker_DoWork;
             worker.RunWorkerAsync(100);
 
             InitializeComponent();
+            ShapeComboBox.ItemsSource = shapes;
             DataContext = this;
         }
 
@@ -43,7 +54,14 @@ namespace CalculatorAndGuessingGame
             Close();
             window.Show();
         }
-        
+
+        //Expands the UI to make space for Area calculators
+        private void Expand_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Width = (!Expanded) ? Width * 2 : Width / 2;
+            Expanded = !Expanded;
+        }
+
         //Finds the content of pressed button and adds it to the string
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -51,11 +69,11 @@ namespace CalculatorAndGuessingGame
             sb.Append(b.Content);
 
         }
-
+        //adds the stringbuilder's string to a datatable if !Empty and uses datatables in build compute to handle calculations
         private void Eval_Button_Click(object sender, RoutedEventArgs e)
         {
             string temp = "";
-            System.Data.DataTable table = new System.Data.DataTable();
+            DataTable table = new DataTable();
             if(sb.ToString() != "")
             {
                 temp = Convert.ToDouble(table.Compute(sb.ToString(), String.Empty)).ToString();
@@ -84,6 +102,22 @@ namespace CalculatorAndGuessingGame
         {
             sb.Clear();
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cb = (ComboBox)e.Source;
+            Setup(cb.SelectedItem.ToString());
+        }
+
+        private void Setup(string layoutstring)
+        {
+            TextBox tb = new TextBox();
+            
+        }
+
+        
+        
+        
     }
 
 }
