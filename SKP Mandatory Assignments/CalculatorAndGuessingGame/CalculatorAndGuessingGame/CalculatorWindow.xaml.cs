@@ -118,7 +118,7 @@ namespace CalculatorAndGuessingGame
                     SetupFrame.Navigate(new Circle());
                     break;
                 case "Traoezoid":
-                    SetupFrame.Navigate(new Square());
+                    SetupFrame.Navigate(new Traoezoid());
                     break;
                 case "Cone":
                     SetupFrame.Navigate(new Cone());

@@ -68,6 +68,9 @@
     <Compile Include="Square.xaml.cs">
       <DependentUpon>Square.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Traoezoid.xaml.cs">
+      <DependentUpon>Traoezoid.xaml</DependentUpon>
+    </Compile>
     <Page Include="CalculatorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -104,6 +107,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Square.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Traoezoid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

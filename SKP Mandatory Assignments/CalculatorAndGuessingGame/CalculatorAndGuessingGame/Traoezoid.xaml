@@ -1,0 +1,23 @@
+﻿<Page x:Class="CalculatorAndGuessingGame.Traoezoid"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CalculatorAndGuessingGame"
+      mc:Ignorable="d" 
+      d:DesignHeight="194" d:DesignWidth="198"
+      Title="Traoezoid">
+
+    <Grid>
+        <TextBox x:Name="BottomBox" HorizontalAlignment="Left" Height="23" Margin="10,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78"/>
+        <TextBox x:Name="HeightBox" HorizontalAlignment="Left" Height="23" Margin="10,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78"/>
+        <Label Content="Botton Length" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="95"/>
+        <Label Content="Height" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="59"/>
+        <TextBox x:Name="AreaBox" HorizontalAlignment="Left" Height="23" Margin="10,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Area" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" Width="59"/>
+        <Button Content="Calc" HorizontalAlignment="Left" Margin="135,153,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click"/>
+        <TextBox x:Name="TopLength" HorizontalAlignment="Left" Height="23" Margin="110,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78"/>
+        <Label Content="Top Length" HorizontalAlignment="Left" Margin="110,4,0,0" VerticalAlignment="Top" Width="78"/>
+
+    </Grid>
+</Page>
