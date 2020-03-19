@@ -23,3 +23,5 @@ C:\Users\Zanxus\Documents\repo\COVID19SKP\SKP Mandatory Assignments\CalculatorAn
 C:\Users\Zanxus\Documents\repo\COVID19SKP\SKP Mandatory Assignments\CalculatorAndGuessingGame\CalculatorAndGuessingGame\obj\Debug\Square.baml
 C:\Users\Zanxus\Documents\repo\COVID19SKP\SKP Mandatory Assignments\CalculatorAndGuessingGame\CalculatorAndGuessingGame\obj\Debug\Circle.g.cs
 C:\Users\Zanxus\Documents\repo\COVID19SKP\SKP Mandatory Assignments\CalculatorAndGuessingGame\CalculatorAndGuessingGame\obj\Debug\Circle.baml
+C:\Users\Zanxus\Documents\repo\COVID19SKP\SKP Mandatory Assignments\CalculatorAndGuessingGame\CalculatorAndGuessingGame\obj\Debug\Cone.g.cs
+C:\Users\Zanxus\Documents\repo\COVID19SKP\SKP Mandatory Assignments\CalculatorAndGuessingGame\CalculatorAndGuessingGame\obj\Debug\Cone.baml

@@ -61,6 +61,9 @@
     <Compile Include="Circle.xaml.cs">
       <DependentUpon>Circle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Cone.xaml.cs">
+      <DependentUpon>Cone.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Hiscore.cs" />
     <Compile Include="Square.xaml.cs">
       <DependentUpon>Square.xaml</DependentUpon>
@@ -70,6 +73,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Circle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Cone.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

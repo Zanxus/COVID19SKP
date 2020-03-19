@@ -121,7 +121,7 @@ namespace CalculatorAndGuessingGame
                     SetupFrame.Navigate(new Square());
                     break;
                 case "Cone":
-                    SetupFrame.Navigate(new Square());
+                    SetupFrame.Navigate(new Cone());
                     break;
                 case "Polygone":
                     SetupFrame.Navigate(new Square());
