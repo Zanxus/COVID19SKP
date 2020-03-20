@@ -25,6 +25,7 @@ namespace CalculatorAndGuessingGame
             InitializeComponent();
         }
 
+        //Method to calculate the area and input check
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (double.TryParse(RadiusBox.Text, out double radius))

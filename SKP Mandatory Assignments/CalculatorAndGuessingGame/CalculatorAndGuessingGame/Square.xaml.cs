@@ -25,6 +25,7 @@ namespace CalculatorAndGuessingGame
             InitializeComponent();
         }
 
+        //calculates the Area and checks the input
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (double.TryParse(LengthBox.Text, out double length) && double.TryParse(WidthBox.Text, out double width)) {

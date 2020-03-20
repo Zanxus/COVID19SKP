@@ -83,6 +83,7 @@ namespace CalculatorAndGuessingGame
             sb.Append(temp);
         }
 
+        //Updates the input Screen of the calculator
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             int waitTime = (int)e.Argument;
@@ -97,7 +98,7 @@ namespace CalculatorAndGuessingGame
 
             }
         }
-
+        //Clears the Screen
         private void Clear_Button_Click(object sender, RoutedEventArgs e)
         {
             sb.Clear();
