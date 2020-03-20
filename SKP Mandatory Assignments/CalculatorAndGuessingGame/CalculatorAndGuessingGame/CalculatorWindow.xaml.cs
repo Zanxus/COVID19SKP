@@ -25,16 +25,10 @@ namespace CalculatorAndGuessingGame
         BackgroundWorker worker = new BackgroundWorker();
         StringBuilder sb = new StringBuilder();
         string[] shapes = { "Circle", "Square", "Traoezoid", "Cone", "Polygone" };
-        
-        enum Shapes
-        {
-            Circle,Square,Traoezoid,Cone,Polygone
-        }
 
         bool Expanded = false;
         public CalculatorWindow()
         {
-
             worker.DoWork += BackgroundWorker_DoWork;
             worker.RunWorkerAsync(100);
 
@@ -77,6 +71,7 @@ namespace CalculatorAndGuessingGame
             if(sb.ToString() != "")
             {
                 temp = Convert.ToDouble(table.Compute(sb.ToString(), String.Empty)).ToString();
+                temp = temp.Replace(',', '.');
             }
 
             sb.Clear();
@@ -95,7 +90,6 @@ namespace CalculatorAndGuessingGame
                     Screen.Text = sb.ToString();
                     
                 });
-
             }
         }
         //Clears the Screen
