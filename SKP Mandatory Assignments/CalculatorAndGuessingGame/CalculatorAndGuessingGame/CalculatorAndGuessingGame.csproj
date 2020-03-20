@@ -65,6 +65,9 @@
       <DependentUpon>Cone.xaml</DependentUpon>
     </Compile>
     <Compile Include="Hiscore.cs" />
+    <Compile Include="Polygone.xaml.cs">
+      <DependentUpon>Polygone.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Square.xaml.cs">
       <DependentUpon>Square.xaml</DependentUpon>
     </Compile>
@@ -106,6 +109,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Polygone.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Square.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
