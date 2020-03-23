@@ -83,7 +83,11 @@ namespace CalculatorAndGuessingGame
         //Removes that latest input incase of user input error
         private void Undo_Button_Click(object sender, RoutedEventArgs e)
         {
-            points.Remove((Vector)PointListView.SelectedItem);
+            if(PointListView.SelectedItems != null)
+            {
+                    points.Remove((Vector)PointListView.SelectedItem);
+            }
+            
         }
     }
 }

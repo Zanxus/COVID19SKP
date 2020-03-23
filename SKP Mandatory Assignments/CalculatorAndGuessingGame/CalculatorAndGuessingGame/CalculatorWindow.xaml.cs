@@ -27,6 +27,7 @@ namespace CalculatorAndGuessingGame
         string[] shapes = { "Circle", "Square", "Traoezoid", "Cone", "Polygone" };
 
         bool Expanded = false;
+        bool FigureExpanded = false;
         public CalculatorWindow()
         {
             worker.DoWork += BackgroundWorker_DoWork;
@@ -88,7 +89,11 @@ namespace CalculatorAndGuessingGame
                 App.Current.Dispatcher.Invoke(delegate
                 {
                     Screen.Text = sb.ToString();
-                    
+                    ShowFigure(Expanded);
+                    if (ShapeComboBox.SelectedItem != null)
+                    {
+                        SetupCanvas(ShapeComboBox.SelectedItem.ToString());
+                    }
                 });
             }
         }
@@ -96,6 +101,13 @@ namespace CalculatorAndGuessingGame
         private void Clear_Button_Click(object sender, RoutedEventArgs e)
         {
             sb.Clear();
+        }
+
+        private void Show_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Width = (!FigureExpanded) ? (Width / 2) * 3 : (Width * 2) / 3;
+            FigureExpanded = !FigureExpanded;
+
         }
         //uses a comboBox to pass a string to setup method.
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -129,10 +141,65 @@ namespace CalculatorAndGuessingGame
             }
 
         }
+        private void SetupCanvas(string layoutstring)
+        {
+            switch (layoutstring)
+            {
+                case "Circle":
+                    break;
+                case "Traoezoid":
+                    break;
+                case "Cone":
+                    break;
+                case "Polygone":
+                    break;
+                case "Square":
+                    Rectangle();
+                    break;
+                default:
+                    break;
+            }
 
-        
-        
-        
+        }
+        private void Rectangle()
+        {
+            Rectangle rectangle = new Rectangle();
+            Square square = (Square)SetupFrame.Content;
+
+            if(square.WidthBox.Text != "" && square.LengthBox.Text != "")
+            {
+                double collectedWidth;
+                int scale;
+                rectangle.Fill = Brushes.Gray;
+                rectangle.Width = double.Parse(square.WidthBox.Text);
+                rectangle.Height = double.Parse(square.LengthBox.Text);
+                if (rectangle.Width > 200 || rectangle.Height > 200)
+                {
+                    if(rectangle.Width > 200)
+                    {
+                        scale = (int)rectangle.Width / 200;
+                    }
+                    else
+                    {
+                        scale = (int)rectangle.Height / 200;
+                    }
+                    
+                    rectangle.Width = rectangle.Width / scale;
+                    rectangle.Height = rectangle.Height / scale;
+                }
+
+                collectedWidth = ((FigureCanvas.Width / 2) - (rectangle.Width));
+                rectangle.Margin = new Thickness(collectedWidth);
+            }
+            FigureCanvas.Children.Clear();
+            FigureCanvas.Children.Add(rectangle);
+        }
+        private void ShowFigure(bool expanded)
+        {
+            if (expanded == true)
+            {
+                ShowButton.Visibility = Visibility.Visible;
+            }
+        }
     }
-
 }
