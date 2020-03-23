@@ -11,8 +11,8 @@
     <Grid>
         <TextBox x:Name="LengthBox" HorizontalAlignment="Left" Height="23" Margin="10,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="WidthBox" HorizontalAlignment="Left" Height="23" Margin="10,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Length" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="59"/>
-        <Label Content="Width" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="59"/>
+        <Label Content="Height(Y):" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="65"/>
+        <Label Content="Width(X):" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="59"/>
         <TextBox x:Name="AreaBox" HorizontalAlignment="Left" Height="23" Margin="10,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Area" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" Width="59"/>
         <Button Content="Calc" HorizontalAlignment="Left" Margin="135,153,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click"/>

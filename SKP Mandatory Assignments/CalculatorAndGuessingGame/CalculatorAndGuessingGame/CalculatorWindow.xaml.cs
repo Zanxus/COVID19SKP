@@ -176,6 +176,8 @@ namespace CalculatorAndGuessingGame
 
             double width;
             double height;
+
+            int scaleBreakingPoint = 100;
             int scale;
             //Checks input for only numbers
             if (double.TryParse(square.WidthBox.Text, out width) && double.TryParse(square.LengthBox.Text, out height))
@@ -186,12 +188,19 @@ namespace CalculatorAndGuessingGame
                     shape.Width = width;
                     shape.Height = height;
 
-                    if (shape.Width > 100 || shape.Height > 100)
+                    if (shape.Width > scaleBreakingPoint || shape.Height > scaleBreakingPoint)
                     {
-                        scale = (shape.Width > shape.Height) ? (int)shape.Width / 100 : (int)shape.Height / 100;
+                        scale = (shape.Width > shape.Height) ? (int)shape.Width / scaleBreakingPoint : (int)shape.Height / scaleBreakingPoint;
 
                         shape.Width = shape.Width / scale;
                         shape.Height = shape.Height / scale;
+                    }
+                    else
+                    {
+                        scale = (shape.Width > shape.Height) ? scaleBreakingPoint / (int)shape.Width : scaleBreakingPoint / (int)shape.Height;
+
+                        shape.Width = shape.Width * scale;
+                        shape.Height = shape.Height * scale;
                     }
                 }
             }
