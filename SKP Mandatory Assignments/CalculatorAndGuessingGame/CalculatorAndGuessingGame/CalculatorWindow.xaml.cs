@@ -141,6 +141,8 @@ namespace CalculatorAndGuessingGame
             }
 
         }
+
+        //Calls method responseable for making the shapes depending on a given string
         private void SetupCanvas(string layoutstring)
         {
             switch (layoutstring)
@@ -161,39 +163,58 @@ namespace CalculatorAndGuessingGame
             }
 
         }
+
+        //Calls the apropriate methods to make a Rectangle
         private void Rectangle()
         {
-            Rectangle rectangle = new Rectangle();
+            AddShape(ConstructShape(new Rectangle()));
+        }
+        //Makes a given shape depending on the perameter (Limited to Square for now)
+        private Shape ConstructShape(Shape shape)
+        {
             Square square = (Square)SetupFrame.Content;
 
-            if(square.WidthBox.Text != "" && square.LengthBox.Text != "")
+            double width;
+            double height;
+            int scale;
+            //Checks input for only numbers
+            if (double.TryParse(square.WidthBox.Text, out width) && double.TryParse(square.LengthBox.Text, out height))
             {
-                double collectedWidth;
-                int scale;
-                rectangle.Fill = Brushes.Gray;
-                rectangle.Width = double.Parse(square.WidthBox.Text);
-                rectangle.Height = double.Parse(square.LengthBox.Text);
-                if (rectangle.Width > 200 || rectangle.Height > 200)
+                if (square.WidthBox.Text != "" && square.LengthBox.Text != "")
                 {
-                    if(rectangle.Width > 200)
-                    {
-                        scale = (int)rectangle.Width / 200;
-                    }
-                    else
-                    {
-                        scale = (int)rectangle.Height / 200;
-                    }
-                    
-                    rectangle.Width = rectangle.Width / scale;
-                    rectangle.Height = rectangle.Height / scale;
-                }
+                    ShapeStyle(shape);
+                    shape.Width = width;
+                    shape.Height = height;
 
-                collectedWidth = ((FigureCanvas.Width / 2) - (rectangle.Width));
-                rectangle.Margin = new Thickness(collectedWidth);
+                    if (shape.Width > 100 || shape.Height > 100)
+                    {
+                        scale = (shape.Width > shape.Height) ? (int)shape.Width / 100 : (int)shape.Height / 100;
+
+                        shape.Width = shape.Width / scale;
+                        shape.Height = shape.Height / scale;
+                    }
+                }
             }
-            FigureCanvas.Children.Clear();
-            FigureCanvas.Children.Add(rectangle);
+            return shape;
         }
+
+        //Adds the Given shape to the Canvas and centers it
+        private void AddShape(Shape shape)
+        {
+            FigureCanvas.Children.Clear();
+            FigureCanvas.Children.Add(shape);
+            Canvas.SetLeft(shape, ((FigureCanvas.Width / 2) - (shape.Width / 2)));
+            Canvas.SetTop(shape, ((FigureCanvas.Height / 2) - (shape.Height / 2)));
+        }
+        
+        //Sets the Drawing Style of the Shape
+        private void ShapeStyle(Shape shape)
+        {
+            shape.StrokeThickness = 1;
+            shape.Stroke = Brushes.Black;
+            shape.Fill = Brushes.White;
+        }
+
         private void ShowFigure(bool expanded)
         {
             if (expanded == true)
