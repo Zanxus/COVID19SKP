@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,12 +23,29 @@ namespace CalculatorAndGuessingGame
     /// </summary>
     public partial class Polygone : Page
     {
-        List<Vector> points = new List<Vector>();
+        BackgroundWorker backgroundWorker = new BackgroundWorker();
+        ObservableCollection<Vector> points = new ObservableCollection<Vector>();
         public Polygone()
         {
+            backgroundWorker.DoWork += BackgroundWorker_DoWork;
+            backgroundWorker.RunWorkerAsync(1000);
             InitializeComponent();
+            PointListView.DataContext = points;
         }
 
+        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            int waitTime = (int)e.Argument;
+            while (true)
+            {
+                Thread.Sleep(waitTime);
+                App.Current.Dispatcher.Invoke(delegate
+                {
+                    PointListView.ItemsSource = points;
+
+                });
+            }
+        }
         //prints out Area calculation
         private void Calc_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -60,16 +80,10 @@ namespace CalculatorAndGuessingGame
 
             return area/2;
         }
-
-        //Clears the points List
-        private void Clear_Button_Click(object sender, RoutedEventArgs e)
-        {
-            points.RemoveAll(x => x == x);
-        }
         //Removes that latest input incase of user input error
         private void Undo_Button_Click(object sender, RoutedEventArgs e)
         {
-            points.Remove(points.FindLast(x => x == x));
+            points.Remove((Vector)PointListView.SelectedItem);
         }
     }
 }

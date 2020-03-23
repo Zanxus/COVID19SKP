@@ -9,17 +9,23 @@
       Title="Polygone">
 
     <Grid>
-        <TextBox x:Name="XBox" HorizontalAlignment="Left" Height="23" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59"/>
-        <TextBox x:Name="YBox" HorizontalAlignment="Left" Height="23" Margin="112,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59"/>
-        <Label Content="X value" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="59"/>
-        <Label Content="Y Value" HorizontalAlignment="Left" Margin="112,10,0,0" VerticalAlignment="Top" Width="59"/>
-        <TextBox x:Name="AreaBox" HorizontalAlignment="Left" Height="23" Margin="10,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Area" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" Width="59"/>
-        <Button Content="Calc" HorizontalAlignment="Left" Margin="135,153,0,0" VerticalAlignment="Top" Width="53" Click="Calc_Button_Click"/>
-        <Button Content="Add Value" HorizontalAlignment="Left" Margin="55,69,0,0" VerticalAlignment="Top" Width="75" Click="Add_Button_Click"/>
-        <Label Content="?" HorizontalAlignment="Left" Margin="173,0,0,0" VerticalAlignment="Top" ToolTip="Input X,Y Value for each corner of the polygone, going clockwise"/>
-        <Button Content="Clear" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" Width="75" Click="Clear_Button_Click"/>
-        <Button Content="Undo" HorizontalAlignment="Left" Margin="96,94,0,0" VerticalAlignment="Top" Width="75" Click="Undo_Button_Click"/>
-
+        <TextBox x:Name="XBox" HorizontalAlignment="Left" Height="23" Margin="0,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59"/>
+        <TextBox x:Name="YBox" HorizontalAlignment="Left" Height="23" Margin="0,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59"/>
+        <Label Content="X value" HorizontalAlignment="Left" Margin="0,2,0,0" VerticalAlignment="Top" Width="59"/>
+        <Label Content="Y Value" HorizontalAlignment="Left" Margin="0,51,0,0" VerticalAlignment="Top" Width="59"/>
+        <TextBox x:Name="AreaBox" HorizontalAlignment="Left" Height="23" Margin="0,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Area" HorizontalAlignment="Left" Margin="0,144,0,0" VerticalAlignment="Top" Width="59"/>
+        <Button Content="Calc" HorizontalAlignment="Left" Margin="135,174,0,0" VerticalAlignment="Top" Width="53" Click="Calc_Button_Click"/>
+        <Button Content="Add Value" HorizontalAlignment="Left" Margin="0,105,0,0" VerticalAlignment="Top" Width="59" Click="Add_Button_Click"/>
+        <Label Content="?" HorizontalAlignment="Left" Margin="44,2,0,0" VerticalAlignment="Top" ToolTip="Input X,Y Value for each corner of the polygone, going clockwise" RenderTransformOrigin="9.666,0.372"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="0,129,0,0" VerticalAlignment="Top" Width="59" Click="Undo_Button_Click"/>
+        <ListView x:Name="PointListView" HorizontalAlignment="Left" Height="163" Margin="70,2,0,0" VerticalAlignment="Top" Width="128">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="X" Width="64" DisplayMemberBinding="{Binding X}" />
+                    <GridViewColumn Header="Y" Width="64" DisplayMemberBinding="{Binding Y}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Page>
