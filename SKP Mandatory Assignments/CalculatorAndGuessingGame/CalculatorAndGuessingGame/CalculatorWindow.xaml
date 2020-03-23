@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorAndGuessingGame"
         mc:Ignorable="d"
-        Title="CalculatorWindow" Height="271.286" Width="416">
+        Title="CalculatorWindow" Height="271.286" Width="208">
     <Grid Margin="0,0,2,0">
         <Button Content="Back To Main Menu" HorizontalAlignment="Left" Margin="158,196,0,0" VerticalAlignment="Top" Width="32" Click="Button_Back" Height="32" RenderTransformOrigin="0.506,-1.482"/>
         <Button Content="7" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="32" Height="33" Click="Button_Click"/>
