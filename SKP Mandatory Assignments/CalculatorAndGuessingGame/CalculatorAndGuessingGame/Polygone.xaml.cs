@@ -24,7 +24,7 @@ namespace CalculatorAndGuessingGame
     public partial class Polygone : Page
     {
         BackgroundWorker backgroundWorker = new BackgroundWorker();
-        ObservableCollection<Vector> points = new ObservableCollection<Vector>();
+        public ObservableCollection<Point> points = new ObservableCollection<Point>();
         public Polygone()
         {
             backgroundWorker.DoWork += BackgroundWorker_DoWork;
@@ -62,7 +62,7 @@ namespace CalculatorAndGuessingGame
             {
                 if (YBox.Text != "" && XBox.Text != "")
                 {
-                    points.Add(new Vector(X, Y));
+                    points.Add(new Point(X, Y));
                 }
             }
         }
@@ -85,7 +85,7 @@ namespace CalculatorAndGuessingGame
         {
             if(PointListView.SelectedItems != null)
             {
-                    points.Remove((Vector)PointListView.SelectedItem);
+                    points.Remove((Point)PointListView.SelectedItem);
             }
             
         }

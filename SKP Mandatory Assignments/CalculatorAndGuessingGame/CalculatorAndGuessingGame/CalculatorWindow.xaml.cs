@@ -177,7 +177,7 @@ namespace CalculatorAndGuessingGame
         }
         private Shape ConstructSquare(Shape shape)
         {
-
+            
             Square square = (Square)SetupFrame.Content;
 
             double width;
@@ -198,6 +198,32 @@ namespace CalculatorAndGuessingGame
             return shape;
         }
 
+        private Shape ConstructPolygone(Polygon shape)
+        {
+
+            Polygone polygone = (Polygone)SetupFrame.Content;
+
+            double width;
+            double height;
+            
+            //Checks input for only numbers
+            Vector vector = new Vector(2,2);
+            shape.TranslatePoint((Point)vector, shape);
+            shape.Points = polygone.points
+
+            if (double.TryParse(polygone.WidthBox.Text, out width) && double.TryParse(polygone.LengthBox.Text, out height))
+            {
+                if (polygone.WidthBox.Text != "" && polygone.LengthBox.Text != "")
+                {
+                    ShapeStyle(shape);
+                    shape.Width = width;
+                    shape.Height = height;
+
+                    Scaling(shape);
+                }
+            }
+            return shape;
+        }
         private Shape ConstructCircle(Shape shape)
         {
 
