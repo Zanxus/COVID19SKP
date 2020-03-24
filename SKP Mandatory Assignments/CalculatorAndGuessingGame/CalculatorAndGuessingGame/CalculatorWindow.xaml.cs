@@ -148,6 +148,7 @@ namespace CalculatorAndGuessingGame
             switch (layoutstring)
             {
                 case "Circle":
+                    AddShape(ConstructCircle(new Ellipse()));
                     break;
                 case "Traoezoid":
                     break;
@@ -156,7 +157,7 @@ namespace CalculatorAndGuessingGame
                 case "Polygone":
                     break;
                 case "Square":
-                    Rectangle();
+                    AddShape(ConstructSquare(new Rectangle()));
                     break;
                 default:
                     break;
@@ -165,20 +166,23 @@ namespace CalculatorAndGuessingGame
         }
 
         //Calls the apropriate methods to make a Rectangle
-        private void Rectangle()
-        {
-            AddShape(ConstructShape(new Rectangle()));
-        }
+
+            
+
         //Makes a given shape depending on the perameter (Limited to Square for now)
-        private Shape ConstructShape(Shape shape)
+
+        enum ShapePage
         {
+            Circle, Square, Traoezoid, Cone, Polygone
+        }
+        private Shape ConstructSquare(Shape shape)
+        {
+
             Square square = (Square)SetupFrame.Content;
 
             double width;
             double height;
 
-            int scaleBreakingPoint = 100;
-            int scale;
             //Checks input for only numbers
             if (double.TryParse(square.WidthBox.Text, out width) && double.TryParse(square.LengthBox.Text, out height))
             {
@@ -188,24 +192,33 @@ namespace CalculatorAndGuessingGame
                     shape.Width = width;
                     shape.Height = height;
 
-                    if (shape.Width > scaleBreakingPoint || shape.Height > scaleBreakingPoint)
-                    {
-                        scale = (shape.Width > shape.Height) ? (int)shape.Width / scaleBreakingPoint : (int)shape.Height / scaleBreakingPoint;
-
-                        shape.Width = shape.Width / scale;
-                        shape.Height = shape.Height / scale;
-                    }
-                    else
-                    {
-                        scale = (shape.Width > shape.Height) ? scaleBreakingPoint / (int)shape.Width : scaleBreakingPoint / (int)shape.Height;
-
-                        shape.Width = shape.Width * scale;
-                        shape.Height = shape.Height * scale;
-                    }
+                    Scaling(shape);
                 }
             }
             return shape;
         }
+
+        private Shape ConstructCircle(Shape shape)
+        {
+
+            Circle circle = (Circle)SetupFrame.Content;
+            
+            double width;
+
+            //Checks input for only numbers
+            if (double.TryParse(circle.RadiusBox.Text, out width))
+            {
+                if (circle.RadiusBox.Text != "")
+                {
+                    ShapeStyle(shape);
+                    shape.Width = width*2;
+                    shape.Height = width*2;
+                    Scaling(shape);
+                }
+            }
+            return shape;
+        }
+
 
         //Adds the Given shape to the Canvas and centers it
         private void AddShape(Shape shape)
@@ -223,7 +236,25 @@ namespace CalculatorAndGuessingGame
             shape.Stroke = Brushes.Black;
             shape.Fill = Brushes.White;
         }
+        private void Scaling(Shape shape)
+        {
+            int scaleBreakingPoint = 100;
+            int scale;
+            if (shape.Width > scaleBreakingPoint || shape.Height > scaleBreakingPoint)
+            {
+                scale = (shape.Width > shape.Height) ? (int)shape.Width / scaleBreakingPoint : (int)shape.Height / scaleBreakingPoint;
 
+                shape.Width = shape.Width / scale;
+                shape.Height = shape.Height / scale;
+            }
+            else
+            {
+                scale = (shape.Width > shape.Height) ? scaleBreakingPoint / (int)shape.Width : scaleBreakingPoint / (int)shape.Height;
+
+                shape.Width = shape.Width * scale;
+                shape.Height = shape.Height * scale;
+            }
+        }
         private void ShowFigure(bool expanded)
         {
             if (expanded == true)
