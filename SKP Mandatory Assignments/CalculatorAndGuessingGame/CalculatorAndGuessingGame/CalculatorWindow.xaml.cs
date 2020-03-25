@@ -151,8 +151,10 @@ namespace CalculatorAndGuessingGame
                     AddShape(ConstructCircle(new Ellipse()));
                     break;
                 case "Traoezoid":
+                    //not possible to make an accurate 2d representation with the data needed to claculate Area
                     break;
                 case "Cone":
+                    //Can't make a d2 repentation of a 3d object
                     break;
                 case "Polygone":
                     AddShape(ConstructPolygone(new Polygon()));
@@ -165,11 +167,6 @@ namespace CalculatorAndGuessingGame
             }
 
         }
-
-        //Calls the apropriate methods to make a Rectangle
-
-            
-
         //Makes a given shape depending on the perameter (Limited to Square for now)
 
         enum ShapePage
@@ -204,17 +201,10 @@ namespace CalculatorAndGuessingGame
 
             Polygone polygone = (Polygone)SetupFrame.Content;
 
-            //Converts List<Point> to PointCollection
-            PointCollectionConverter pointCollectionConverter = new PointCollectionConverter();
             shape.Points = polygone.pointsCollection;
 
             ShapeStyle(shape);
-            shape.Width = 100;
-            shape.Height = 100;
-
-            Scaling(shape);
-                
-            
+            //The Polygone isn't scaled since that would alter the points value of the shape.
             return shape;
         }
         private Shape ConstructCircle(Shape shape)
@@ -259,7 +249,7 @@ namespace CalculatorAndGuessingGame
         {
             int scaleBreakingPoint = 100;
             int scale;
-            if (shape.Width > scaleBreakingPoint || shape.Height > scaleBreakingPoint)
+            if (shape.Width >= scaleBreakingPoint || shape.Height >= scaleBreakingPoint)
             {
                 scale = (shape.Width > shape.Height) ? (int)shape.Width / scaleBreakingPoint : (int)shape.Height / scaleBreakingPoint;
 
