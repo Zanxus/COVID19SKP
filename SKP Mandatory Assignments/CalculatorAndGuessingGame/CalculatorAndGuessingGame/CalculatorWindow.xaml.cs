@@ -155,6 +155,7 @@ namespace CalculatorAndGuessingGame
                 case "Cone":
                     break;
                 case "Polygone":
+                    AddShape(ConstructPolygone(new Polygon()));
                     break;
                 case "Square":
                     AddShape(ConstructSquare(new Rectangle()));
@@ -203,25 +204,17 @@ namespace CalculatorAndGuessingGame
 
             Polygone polygone = (Polygone)SetupFrame.Content;
 
-            double width;
-            double height;
+            //Converts List<Point> to PointCollection
+            PointCollectionConverter pointCollectionConverter = new PointCollectionConverter();
+            shape.Points = polygone.pointsCollection;
+
+            ShapeStyle(shape);
+            shape.Width = 100;
+            shape.Height = 100;
+
+            Scaling(shape);
+                
             
-            //Checks input for only numbers
-            Vector vector = new Vector(2,2);
-            shape.TranslatePoint((Point)vector, shape);
-            shape.Points = polygone.points
-
-            if (double.TryParse(polygone.WidthBox.Text, out width) && double.TryParse(polygone.LengthBox.Text, out height))
-            {
-                if (polygone.WidthBox.Text != "" && polygone.LengthBox.Text != "")
-                {
-                    ShapeStyle(shape);
-                    shape.Width = width;
-                    shape.Height = height;
-
-                    Scaling(shape);
-                }
-            }
             return shape;
         }
         private Shape ConstructCircle(Shape shape)

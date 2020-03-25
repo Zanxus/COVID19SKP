@@ -25,6 +25,7 @@ namespace CalculatorAndGuessingGame
     {
         BackgroundWorker backgroundWorker = new BackgroundWorker();
         public ObservableCollection<Point> points = new ObservableCollection<Point>();
+        public PointCollection pointsCollection = new PointCollection();
         public Polygone()
         {
             backgroundWorker.DoWork += BackgroundWorker_DoWork;
@@ -63,7 +64,9 @@ namespace CalculatorAndGuessingGame
                 if (YBox.Text != "" && XBox.Text != "")
                 {
                     points.Add(new Point(X, Y));
+                    pointsCollection.Add(new Point(X, Y));
                 }
+
             }
         }
         //calculates the area of a given polygone
@@ -85,7 +88,9 @@ namespace CalculatorAndGuessingGame
         {
             if(PointListView.SelectedItems != null)
             {
-                    points.Remove((Point)PointListView.SelectedItem);
+                pointsCollection.Remove((Point)PointListView.SelectedItem);
+                points.Remove((Point)PointListView.SelectedItem);
+
             }
             
         }
