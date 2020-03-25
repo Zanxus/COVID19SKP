@@ -25,6 +25,7 @@ namespace CalculatorAndGuessingGame
     {
         BackgroundWorker backgroundWorker = new BackgroundWorker();
         public ObservableCollection<Point> points = new ObservableCollection<Point>();
+        //PointCollection used to draw the Polygone
         public PointCollection pointsCollection = new PointCollection();
         public Polygone()
         {
@@ -86,7 +87,7 @@ namespace CalculatorAndGuessingGame
         //Removes that latest input incase of user input error
         private void Undo_Button_Click(object sender, RoutedEventArgs e)
         {
-            if(PointListView.SelectedItems != null)
+            if(PointListView.SelectedItems != null && PointListView.SelectedItem != null)
             {
                 pointsCollection.Remove((Point)PointListView.SelectedItem);
                 points.Remove((Point)PointListView.SelectedItem);

@@ -79,7 +79,7 @@ namespace CalculatorAndGuessingGame
             sb.Append(temp);
         }
 
-        //Updates the input Screen of the calculator
+        //Updates the input Screen of the calculator and updates the Figures
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             int waitTime = (int)e.Argument;
@@ -97,12 +97,13 @@ namespace CalculatorAndGuessingGame
                 });
             }
         }
-        //Clears the Screen
+        //Clears the Screen by clreaing the stringBuilder
         private void Clear_Button_Click(object sender, RoutedEventArgs e)
         {
             sb.Clear();
         }
 
+        //Expands the width of the window to allow room for the contruction of the shapes
         private void Show_Button_Click(object sender, RoutedEventArgs e)
         {
             Width = (!FigureExpanded) ? (Width / 2) * 3 : (Width * 2) / 3;
@@ -116,7 +117,7 @@ namespace CalculatorAndGuessingGame
             Setup(cb.SelectedItem.ToString());
         }
 
-        //Creates a page and navigate to it using the layoutstring.
+        //Creates a page and navigate to it using the layoutstring .
         private void Setup(string layoutstring)
         {
             switch (layoutstring)
@@ -167,12 +168,7 @@ namespace CalculatorAndGuessingGame
             }
 
         }
-        //Makes a given shape depending on the perameter (Limited to Square for now)
-
-        enum ShapePage
-        {
-            Circle, Square, Traoezoid, Cone, Polygone
-        }
+        //Makes a square by taking data from the Square page class
         private Shape ConstructSquare(Shape shape)
         {
             
@@ -195,18 +191,19 @@ namespace CalculatorAndGuessingGame
             }
             return shape;
         }
-
+        //Makes a polygone using the polygone page
         private Shape ConstructPolygone(Polygon shape)
         {
 
             Polygone polygone = (Polygone)SetupFrame.Content;
-
+            //uses the PointColletion instead of the list as it needs to be one and can't simply be casted.
             shape.Points = polygone.pointsCollection;
 
             ShapeStyle(shape);
             //The Polygone isn't scaled since that would alter the points value of the shape.
             return shape;
         }
+        //makes the circle from the Circle Page
         private Shape ConstructCircle(Shape shape)
         {
 
@@ -229,7 +226,7 @@ namespace CalculatorAndGuessingGame
         }
 
 
-        //Adds the Given shape to the Canvas and centers it
+        //Adds the Given shape to the Canvas and centers it, works by clearing the canvas first to fix any overlay.
         private void AddShape(Shape shape)
         {
             FigureCanvas.Children.Clear();
@@ -238,13 +235,15 @@ namespace CalculatorAndGuessingGame
             Canvas.SetTop(shape, ((FigureCanvas.Height / 2) - (shape.Height / 2)));
         }
         
-        //Sets the Drawing Style of the Shape
+        //Sets the Drawing Style of the Shapes
         private void ShapeStyle(Shape shape)
         {
             shape.StrokeThickness = 1;
             shape.Stroke = Brushes.Black;
             shape.Fill = Brushes.White;
         }
+
+        //this scales the figure to be a constant size focused around the breakingpoint, if smaller it scales up if larger it scales down
         private void Scaling(Shape shape)
         {
             int scaleBreakingPoint = 100;
@@ -264,6 +263,8 @@ namespace CalculatorAndGuessingGame
                 shape.Height = shape.Height * scale;
             }
         }
+
+        //Unhides a button that expands the UI to include the Canvas
         private void ShowFigure(bool expanded)
         {
             if (expanded == true)
