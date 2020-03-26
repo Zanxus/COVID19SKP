@@ -175,25 +175,6 @@ MonoBehaviour:
   playerTexts:
   - {fileID: 291883916}
   - {fileID: 1467894795}
---- !u!1 &114017075 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5479178889855886559, guid: 6fb40a4c3651fe64cacb4f9131c73801,
-    type: 3}
-  m_PrefabInstance: {fileID: 6244595466104307278}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &114017076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 114017075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea7d7495833204790ba1d3a8755397f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ConversionMode: 0
 --- !u!1001 &137466713
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -347,6 +328,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: upKey
+      value: 273
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: downKey
+      value: 274
+      objectReference: {fileID: 0}
     - target: {fileID: 1314940309337419778, guid: 12afeaf2bb15d604ab614517d7cfa828,
         type: 3}
       propertyPath: m_Name
@@ -406,14 +395,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: upKey
-      value: 273
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: downKey
-      value: 274
       objectReference: {fileID: 0}
     - target: {fileID: 6505968936035989361, guid: 12afeaf2bb15d604ab614517d7cfa828,
         type: 3}
@@ -911,6 +892,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Paddle 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883569502534337757, guid: 12afeaf2bb15d604ab614517d7cfa828,
+        type: 3}
+      propertyPath: upKey
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883569502534337757, guid: 12afeaf2bb15d604ab614517d7cfa828,
+        type: 3}
+      propertyPath: downKey
+      value: 115
       objectReference: {fileID: 0}
     - target: {fileID: 5706543593829935943, guid: 12afeaf2bb15d604ab614517d7cfa828,
         type: 3}
