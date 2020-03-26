@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
+using System.Data;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Data;
 
 namespace CalculatorAndGuessingGame
 {
@@ -69,7 +62,7 @@ namespace CalculatorAndGuessingGame
         {
             string temp = "";
             DataTable table = new DataTable();
-            if(sb.ToString() != "")
+            if (sb.ToString() != "")
             {
                 temp = Convert.ToDouble(table.Compute(sb.ToString(), String.Empty)).ToString();
                 temp = temp.Replace(',', '.');
@@ -171,7 +164,7 @@ namespace CalculatorAndGuessingGame
         //Makes a square by taking data from the Square page class
         private Shape ConstructSquare(Shape shape)
         {
-            
+
             Square square = (Square)SetupFrame.Content;
 
             double width;
@@ -208,7 +201,7 @@ namespace CalculatorAndGuessingGame
         {
 
             Circle circle = (Circle)SetupFrame.Content;
-            
+
             double width;
 
             //Checks input for only numbers
@@ -217,14 +210,13 @@ namespace CalculatorAndGuessingGame
                 if (circle.RadiusBox.Text != "")
                 {
                     ShapeStyle(shape);
-                    shape.Width = width*2;
-                    shape.Height = width*2;
+                    shape.Width = width * 2;
+                    shape.Height = width * 2;
                     Scaling(shape);
                 }
             }
             return shape;
         }
-
 
         //Adds the Given shape to the Canvas and centers it, works by clearing the canvas first to fix any overlay.
         private void AddShape(Shape shape)
@@ -234,7 +226,7 @@ namespace CalculatorAndGuessingGame
             Canvas.SetLeft(shape, ((FigureCanvas.Width / 2) - (shape.Width / 2)));
             Canvas.SetTop(shape, ((FigureCanvas.Height / 2) - (shape.Height / 2)));
         }
-        
+
         //Sets the Drawing Style of the Shapes
         private void ShapeStyle(Shape shape)
         {
