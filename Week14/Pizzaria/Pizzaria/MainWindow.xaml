@@ -6,7 +6,28 @@
         xmlns:local="clr-namespace:Pizzaria"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <ItemsControl x:Name="icPizzaList">
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <StackPanel>
+                    <TextBlock Text="{Binding Name}"/>
+                    <ItemsControl ItemsSource="{Binding Ingredients}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <TextBlock Text="{Binding Price}"/>
+                </StackPanel>
+            </DataTemplate>
+
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
+
+
 </Window>

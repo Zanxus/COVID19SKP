@@ -11,12 +11,12 @@ namespace Pizzaria
    public static class PizzaController
     {
         //CRUD Class
-        static ObservableCollection<Pizza> PizzaList = new ObservableCollection<Pizza>();
+        public static ObservableCollection<Pizza> PizzaList = new ObservableCollection<Pizza>();
 
         //CreatePizza -Makes the Pizza using the Pizza Class Constructor and addeds to the list of pizzas
-        public static void CreatePizza(int pizzaID, string name, Pizza.Size size, ObservableCollection<Ingredient> ingredients, decimal price)
+        public static void CreatePizza(int pizzaID, string name, Pizza.PizzaSize size, ObservableCollection<string> ingredients, decimal price)
         {
-            if (PizzaList.First(x => x.PizzaID == pizzaID) == null)
+            if (PizzaList.FirstOrDefault(x => x.PizzaID == pizzaID) == null || PizzaList.Count == 0)
             {
                 PizzaList.Add(new Pizza(pizzaID, name, size, ingredients, price));
             }
@@ -40,12 +40,12 @@ namespace Pizzaria
 
         }
         //Overrides old data with new data
-        public static void UpdatePizza(int pizzaID, string name, Pizza.Size size, ObservableCollection<Ingredient> ingredients, decimal price)
+        public static void UpdatePizza(int pizzaID, string name, Pizza.PizzaSize size, ObservableCollection<string> ingredients, decimal price)
         {
             Pizza pizza = ReadPizza(pizzaID);
             pizza.Name = name;
-            pizza.Ingredents = ingredients;
-            pizza.size = size;
+            pizza.Ingredients = ingredients;
+            pizza.Size = size;
             pizza.Price = price;
         }
         //Removes a Pizza by ID

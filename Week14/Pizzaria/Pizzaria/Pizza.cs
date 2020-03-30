@@ -11,22 +11,37 @@ namespace Pizzaria
     {
         public int PizzaID { get; set; }
         public string Name { get; set; }
-        public Size size;
-        public ObservableCollection<Ingredient> ingredients;
+        public decimal Price { get; set; }
+        public PizzaSize Size { get; set; }
+        public ObservableCollection<string> Ingredients { get; set; }
 
-        public Pizza(int pizzaID,string Name, Size size, ObservableCollection<Ingredient> ingredients, decimal price)
+
+        public Pizza(int pizzaID,string name, PizzaSize size, ObservableCollection<string> ingredients, decimal price)
         {
             this.PizzaID = pizzaID;
-            this.size = size;
-            this.ingredients = ingredients;
+            this.Name = name;
+            this.Size = size;
+            this.Ingredients = ingredients;
             Price = price;
         }
 
-        public ObservableCollection<Ingredient> Ingredents { get; set; }
-        public decimal Price { get; set; }
-        public enum Size
+        public enum PizzaSize
         {
-            Normal,Familiy
+            Normal = 1,Familiy
+        }
+
+        private decimal PizzaPrice()
+        {
+            decimal price = 60;
+            if (Size == PizzaSize.Familiy)
+            {
+                price *= 2;
+            };
+            if (this.Ingredients.Count > 5)
+            {
+                price += 8;
+            }
+            return price;
         }
     }
 }

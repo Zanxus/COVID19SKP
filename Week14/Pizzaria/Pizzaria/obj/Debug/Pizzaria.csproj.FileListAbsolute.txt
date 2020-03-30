@@ -1,0 +1,15 @@
+C:\Users\Zanxus\Documents\repo\COVID19SKP\Week14\Pizzaria\Pizzaria\bin\Debug\Pizzaria.exe.config
+C:\Users\Zanxus\Documents\repo\COVID19SKP\Week14\Pizzaria\Pizzaria\bin\Debug\Pizzaria.exe
+C:\Users\Zanxus\Documents\repo\COVID19SKP\Week14\Pizzaria\Pizzaria\bin\Debug\Pizzaria.pdb
+C:\Users\Zanxus\Documents\repo\COVID19SKP\Week14\Pizzaria\Pizzaria\obj\Debug\Pizzaria.csprojAssemblyReference.cache
+C:\Users\Zanxus\Documents\repo\COVID19SKP\Week14\Pizzaria\Pizzaria\obj\Debug\MainWindow.g.cs
+C:\Users\Zanxus\Documents\repo\COVID19SKP\Week14\Pizzaria\Pizzaria\obj\Debug\App.g.cs
+C:\Users\Zanxus\Documents\repo\COVID19SKP\Week14\Pizzaria\Pizzaria\obj\Debug\Pizzaria_MarkupCompile.cache
+C:\Users\Zanxus\Documents\repo\COVID19SKP\Week14\Pizzaria\Pizzaria\obj\Debug\Pizzaria_MarkupCompile.lref
+C:\Users\Zanxus\Documents\repo\COVID19SKP\Week14\Pizzaria\Pizzaria\obj\Debug\MainWindow.baml
+C:\Users\Zanxus\Documents\repo\COVID19SKP\Week14\Pizzaria\Pizzaria\obj\Debug\Pizzaria.g.resources
+C:\Users\Zanxus\Documents\repo\COVID19SKP\Week14\Pizzaria\Pizzaria\obj\Debug\Pizzaria.Properties.Resources.resources
+C:\Users\Zanxus\Documents\repo\COVID19SKP\Week14\Pizzaria\Pizzaria\obj\Debug\Pizzaria.csproj.GenerateResource.cache
+C:\Users\Zanxus\Documents\repo\COVID19SKP\Week14\Pizzaria\Pizzaria\obj\Debug\Pizzaria.csproj.CoreCompileInputs.cache
+C:\Users\Zanxus\Documents\repo\COVID19SKP\Week14\Pizzaria\Pizzaria\obj\Debug\Pizzaria.exe
+C:\Users\Zanxus\Documents\repo\COVID19SKP\Week14\Pizzaria\Pizzaria\obj\Debug\Pizzaria.pdb

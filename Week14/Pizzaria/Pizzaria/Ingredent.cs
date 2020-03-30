@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace Pizzaria
 {
+    //not in use currently
     public struct Ingredient
     {
         public string Name;
+
+        public Ingredient(string name)
+        {
+            Name = name;
+        }
     }
+
 }

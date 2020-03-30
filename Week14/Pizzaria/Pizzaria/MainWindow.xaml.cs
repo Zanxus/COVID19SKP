@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,12 @@ namespace Pizzaria
         public MainWindow()
         {
             InitializeComponent();
+
+            PizzaController.CreatePizza(0, "Margherita", Pizza.PizzaSize.Normal, new ObservableCollection<string>{"Tomatosauce","Cheese","Oregano" }, 60);
+            PizzaController.CreatePizza(1, "Vesuvio", Pizza.PizzaSize.Normal, new ObservableCollection<string> { "Tomatosauce", "Cheese", "Oregano", "Ham"}, 60);
+            PizzaController.CreatePizza(2, "Capricciosa", Pizza.PizzaSize.Normal, new ObservableCollection<string> { "Tomatosauce", "Cheese", "Oregano", "Ham", "Mushrooms", "Shrimp" }, 70);
+
+            icPizzaList.ItemsSource = PizzaController.PizzaList;
         }
     }
 }
