@@ -10,10 +10,11 @@ namespace Pizzaria
     public class Pizza
     {
         public int PizzaID { get; set; }
+        public string Name { get; set; }
         public Size size;
         public ObservableCollection<Ingredient> ingredients;
 
-        public Pizza(int pizzaID, Size size, ObservableCollection<Ingredient> ingredients, decimal price)
+        public Pizza(int pizzaID,string Name, Size size, ObservableCollection<Ingredient> ingredients, decimal price)
         {
             this.PizzaID = pizzaID;
             this.size = size;
