@@ -18,19 +18,41 @@ namespace Pizzaria
         {
             if (PizzaList.First(x => x.PizzaID == pizzaID) == null)
             {
-                throw new Exception("Pizza with that ID already exists");
+                PizzaList.Add(new Pizza(pizzaID, size, ingredients, price));
             }
             else
             {
-                PizzaList.Add(new Pizza(pizzaID, size, ingredients, price));
+                throw new Exception("Pizza with that ID already exists");
             }
             
         }
-        //Reads a specific pizza
+        //Reads a Pizza by ID
         public static Pizza ReadPizza(int pizzaID)
         {
-            return PizzaList.FirstOrDefault(x => x.PizzaID == pizzaID);
+            if (PizzaList.First(x => x.PizzaID == pizzaID) == null)
+            {
+                throw new Exception("Pizza with that ID doesn't exists");
+            }
+            else
+            {
+                return PizzaList.FirstOrDefault(x => x.PizzaID == pizzaID);
+            }
+
         }
+        //Overrides old data with new data
+        public static void UpdatePizza(int pizzaID, Pizza.Size size, ObservableCollection<Ingredient> ingredients, decimal price)
+        {
+            Pizza pizza = ReadPizza(pizzaID);
+            pizza.Ingredents = ingredients;
+            pizza.size = size;
+            pizza.Price = price;
+        }
+        //Removes a Pizza by ID
+        public static void RemovePizza(int pizzaID)
+        {
+            PizzaList.Remove(ReadPizza(pizzaID));
+        }
+
 
 
 
