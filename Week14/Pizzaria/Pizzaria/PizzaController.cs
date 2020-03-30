@@ -48,6 +48,14 @@ namespace Pizzaria
             pizza.Size = size;
             pizza.Price = price;
         }
+        public static void UpdatePizza(int pizzaID, Pizza.PizzaSize size, decimal price)
+        {
+            Pizza pizza = ReadPizza(pizzaID);
+            pizza.Size = size;
+            pizza.Price = price;
+
+            PizzaList.Add(pizza);
+        }
         //Removes a Pizza by ID
         public static void RemovePizza(int pizzaID)
         {

@@ -6,28 +6,43 @@
         xmlns:local="clr-namespace:Pizzaria"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <ItemsControl x:Name="icPizzaList">
+    <StackPanel>
+        <TextBlock Text="Covid Pizzaria" FontSize="20"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Content="Normal" Grid.Column="0" Margin="0,0,3,0" Click="Normal_Click"/>
+            <Button Content="Familiy" Grid.Column="1" Margin="3,0,0,0" Click="Familiy_Click"/>
+        </Grid>
+
+        <ItemsControl x:Name="icPizzaList">
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <StackPanel>
-                    <TextBlock Text="{Binding Name}"/>
-                    <ItemsControl ItemsSource="{Binding Ingredients}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                </Grid>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                    <TextBlock Text="{Binding Price}"/>
+                    <StackPanel Margin="3,3,3,3">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding PizzaID}" FontSize="14"/>
+                            <TextBlock Text=" " FontSize="14"/>
+                            <TextBlock Text="{Binding Name}" FontSize="14"/>
+                        </StackPanel>
+                        <ItemsControl ItemsSource="{Binding Ingredients}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                        <TextBlock Text="{Binding Price}"/>
                 </StackPanel>
             </DataTemplate>
 
         </ItemsControl.ItemTemplate>
     </ItemsControl>
+    </StackPanel>
+    
 
 
 </Window>

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,15 +23,67 @@ namespace Pizzaria
     /// </summary>
     public partial class MainWindow : Window
     {
+        bool normalPizzaSelected = true;
+        BackgroundWorker worker = new BackgroundWorker();
         public MainWindow()
         {
+            worker.DoWork += Worker_DoWork;
+            worker.RunWorkerAsync(100);
             InitializeComponent();
 
-            PizzaController.CreatePizza(0, "Margherita", Pizza.PizzaSize.Normal, new ObservableCollection<string>{"Tomatosauce","Cheese","Oregano" }, 60);
-            PizzaController.CreatePizza(1, "Vesuvio", Pizza.PizzaSize.Normal, new ObservableCollection<string> { "Tomatosauce", "Cheese", "Oregano", "Ham"}, 60);
-            PizzaController.CreatePizza(2, "Capricciosa", Pizza.PizzaSize.Normal, new ObservableCollection<string> { "Tomatosauce", "Cheese", "Oregano", "Ham", "Mushrooms", "Shrimp" }, 70);
+            //Normal Test Pizzas
+            PizzaController.CreatePizza(1, "Margherita", Pizza.PizzaSize.Normal, new ObservableCollection<string>{"Tomatosauce","Cheese","Oregano" }, 60);
+            PizzaController.CreatePizza(2, "Vesuvio", Pizza.PizzaSize.Normal, new ObservableCollection<string> { "Tomatosauce", "Cheese", "Oregano", "Ham"}, 60);
+            PizzaController.CreatePizza(3, "Capricciosa", Pizza.PizzaSize.Normal, new ObservableCollection<string> { "Tomatosauce", "Cheese", "Oregano", "Ham", "Mushrooms", "Shrimp" }, 70);
+           
+
 
             icPizzaList.ItemsSource = PizzaController.PizzaList;
+        }
+
+        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            int waitTime = (int)e.Argument;
+            while (true)
+            {
+                Thread.Sleep(waitTime);
+                ObservableCollection<Pizza> temp = PizzaController.PizzaList;
+                App.Current.Dispatcher.Invoke(delegate
+                {
+                    if (!icPizzaList.ItemsSource.Equals(temp))
+                    {
+                        icPizzaList.ItemsSource = temp;
+                    }
+                });
+
+            }
+        }
+
+        private void Normal_Click(object sender, RoutedEventArgs e)
+        {
+            if (!normalPizzaSelected)
+            {
+                foreach (Pizza pizza in PizzaController.PizzaList)
+                {
+                    PizzaController.UpdatePizza(pizza.PizzaID, Pizza.PizzaSize.Normal, pizza.Price / 2);
+                }
+                normalPizzaSelected = true;
+            }
+
+        }
+
+        private void Familiy_Click(object sender, RoutedEventArgs e)
+        {
+            if (normalPizzaSelected)
+            {
+                foreach (Pizza pizza in PizzaController.PizzaList)
+                {
+                    PizzaController.UpdatePizza(pizza.PizzaID, Pizza.PizzaSize.Familiy, pizza.Price * 2);
+                }
+                normalPizzaSelected = false;
+            }
+
+            
         }
     }
 }
