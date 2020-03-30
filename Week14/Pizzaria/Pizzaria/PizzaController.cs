@@ -11,15 +11,28 @@ namespace Pizzaria
    public static class PizzaController
     {
         //CRUD Class
-        private ObservableCollection<Pizza> pizzaList = new ObservableCollection<Pizza>();
+        static ObservableCollection<Pizza> PizzaList = new ObservableCollection<Pizza>();
 
-        internal ObservableCollection<Pizza> PizzaList { get => pizzaList; set => pizzaList = value; }
-
-        //CreatePizza
-        public static void CreatePizza(Pizza.Size size, ObservableCollection<Ingredient> ingredients, decimal price)
+        //CreatePizza -Makes the Pizza using the Pizza Class Constructor and addeds to the list of pizzas
+        public static void CreatePizza(int pizzaID, Pizza.Size size, ObservableCollection<Ingredient> ingredients, decimal price)
         {
-            PizzaList.Add(new Pizza(size, ingredients, price));
+            if (PizzaList.First(x => x.PizzaID == pizzaID) == null)
+            {
+                throw new Exception("Pizza with that ID already exists");
+            }
+            else
+            {
+                PizzaList.Add(new Pizza(pizzaID, size, ingredients, price));
+            }
+            
         }
+        //Reads a specific pizza
+        public static Pizza ReadPizza(int pizzaID)
+        {
+            return PizzaList.FirstOrDefault(x => x.PizzaID == pizzaID);
+        }
+
+
 
     }
 }

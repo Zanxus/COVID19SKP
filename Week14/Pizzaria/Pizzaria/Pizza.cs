@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace Pizzaria
 {
-    class Pizza
+    public class Pizza
     {
-        private Size size;
-        private ObservableCollection<Ingredient> ingredients;
+        public int PizzaID { get; set; }
+        public Size size;
+        public ObservableCollection<Ingredient> ingredients;
 
-        public Pizza(Size size, ObservableCollection<Ingredient> ingredients, decimal price)
+        public Pizza(int pizzaID, Size size, ObservableCollection<Ingredient> ingredients, decimal price)
         {
+            this.PizzaID = pizzaID;
             this.size = size;
             this.ingredients = ingredients;
             Price = price;

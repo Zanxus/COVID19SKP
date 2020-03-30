@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pizzaria
 {
-    struct Ingredient
+    public struct Ingredient
     {
         public string Name;
     }
