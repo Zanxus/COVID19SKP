@@ -11,6 +11,8 @@ public class IncreaseVelocityOverTimeSystem : JobComponentSystem
     {
         float deltaTime = Time.DeltaTime;
 
+        Entities.ForEach<PhysicsVelocity, >
+
         Entities.ForEach((ref PhysicsVelocity vel,in SpeedIncreaseOverTimeData data) => 
         {
             float2 modifier = new float2(data.increasePerSecond * deltaTime);
