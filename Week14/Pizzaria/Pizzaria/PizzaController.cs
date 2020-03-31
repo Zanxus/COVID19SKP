@@ -14,11 +14,11 @@ namespace Pizzaria
         public static ObservableCollection<Pizza> PizzaList = new ObservableCollection<Pizza>();
 
         //CreatePizza -Makes the Pizza using the Pizza Class Constructor and addeds to the list of pizzas
-        public static void CreatePizza(int pizzaID, string name, Pizza.PizzaSize size, ObservableCollection<string> ingredients, decimal price)
+        public static void CreatePizza(int pizzaID, string name, Pizza.PizzaSize size, Pizza.PizzaDough dough,Pizza.PizzaSauce sauce, ObservableCollection<string> toppings, decimal price)
         {
             if (PizzaList.FirstOrDefault(x => x.PizzaID == pizzaID) == null || PizzaList.Count == 0)
             {
-                PizzaList.Add(new Pizza(pizzaID, name, size, ingredients, price));
+                PizzaList.Add(new Pizza(pizzaID, name, size, dough, sauce, toppings, price));
             }
             else
             {
@@ -40,13 +40,25 @@ namespace Pizzaria
 
         }
         //Overrides old data with new data
-        public static void UpdatePizza(int pizzaID, string name, Pizza.PizzaSize size, ObservableCollection<string> ingredients, decimal price)
+        public static void UpdatePizza(int pizzaID, string name, Pizza.PizzaSize size,Pizza.PizzaDough dough,Pizza.PizzaSauce sauce, ObservableCollection<string> toppings, decimal price)
         {
             Pizza pizza = ReadPizza(pizzaID);
             pizza.Name = name;
-            pizza.Ingredients = ingredients;
+            pizza.Toppings = toppings;
             pizza.Size = size;
+            pizza.Dough = dough;
+            pizza.Sauce = sauce;
             pizza.Price = price;
+        }
+        //Overload version of the update, with no price
+        public static void UpdatePizza(int pizzaID, string name, Pizza.PizzaSize size, Pizza.PizzaDough dough, Pizza.PizzaSauce sauce, ObservableCollection<string> toppings)
+        {
+            Pizza pizza = ReadPizza(pizzaID);
+            pizza.Name = name;
+            pizza.Toppings = toppings;
+            pizza.Size = size;
+            pizza.Dough = dough;
+            pizza.Sauce = sauce;
         }
         public static void UpdatePizza(int pizzaID, Pizza.PizzaSize size, decimal price)
         {

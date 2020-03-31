@@ -32,9 +32,9 @@ namespace Pizzaria
             InitializeComponent();
 
             //Normal Test Pizzas
-            PizzaController.CreatePizza(1, "Margherita", Pizza.PizzaSize.Normal, new ObservableCollection<string>{"Tomatosauce","Cheese","Oregano" }, 60);
-            PizzaController.CreatePizza(2, "Vesuvio", Pizza.PizzaSize.Normal, new ObservableCollection<string> { "Tomatosauce", "Cheese", "Oregano", "Ham"}, 60);
-            PizzaController.CreatePizza(3, "Capricciosa", Pizza.PizzaSize.Normal, new ObservableCollection<string> { "Tomatosauce", "Cheese", "Oregano", "Ham", "Mushrooms", "Shrimp" }, 70);
+            PizzaController.CreatePizza(1, "Margherita", Pizza.PizzaSize.Normal, Pizza.PizzaDough.Wheat,Pizza.PizzaSauce.Tomato, new ObservableCollection<string>{"Tomatosauce","Cheese","Oregano" }, 60);
+            PizzaController.CreatePizza(2, "Vesuvio", Pizza.PizzaSize.Normal, Pizza.PizzaDough.Wheat, Pizza.PizzaSauce.Tomato, new ObservableCollection<string> { "Tomatosauce", "Cheese", "Oregano", "Ham"}, 60);
+            PizzaController.CreatePizza(3, "Capricciosa", Pizza.PizzaSize.Normal, Pizza.PizzaDough.Wheat, Pizza.PizzaSauce.Tomato, new ObservableCollection<string> { "Tomatosauce", "Cheese", "Oregano", "Ham", "Mushrooms", "Shrimp" }, 70);
            
 
 

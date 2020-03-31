@@ -13,21 +13,33 @@ namespace Pizzaria
         public string Name { get; set; }
         public decimal Price { get; set; }
         public PizzaSize Size { get; set; }
-        public ObservableCollection<string> Ingredients { get; set; }
+        public PizzaDough Dough { get; set; }
+        public PizzaSauce Sauce { get; set; }
+        public ObservableCollection<string> Toppings { get; set; }
 
 
-        public Pizza(int pizzaID,string name, PizzaSize size, ObservableCollection<string> ingredients, decimal price)
+        public Pizza(int pizzaID,string name, PizzaSize size, PizzaDough dough, PizzaSauce sauce, ObservableCollection<string> toppings, decimal price)
         {
             this.PizzaID = pizzaID;
             this.Name = name;
             this.Size = size;
-            this.Ingredients = ingredients;
-            Price = price;
+            this.Dough = dough;
+            this.Sauce = sauce;
+            this.Toppings = toppings;
+            this.Price = price;
         }
 
         public enum PizzaSize
         {
             Normal = 1,Familiy
+        }
+        public enum PizzaDough
+        {
+            Wheat,WholeWheat,DeepDish
+        }
+        public enum PizzaSauce
+        {
+            Tomato,Taco,NoSauce
         }
 
         private decimal PizzaPrice()
@@ -37,7 +49,7 @@ namespace Pizzaria
             {
                 price *= 2;
             };
-            if (this.Ingredients.Count > 5)
+            if (this.Toppings.Count > 5)
             {
                 price += 8;
             }
