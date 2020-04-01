@@ -14,7 +14,7 @@ namespace Pizzaria
         public static ObservableCollection<Pizza> PizzaList = new ObservableCollection<Pizza>();
 
         //CreatePizza -Makes the Pizza using the Pizza Class Constructor and addeds to the list of pizzas
-        public static void CreatePizza(int pizzaID, string name, Pizza.PizzaSize size, Pizza.PizzaDough dough,Pizza.PizzaSauce sauce, ObservableCollection<string> toppings, decimal price)
+        public static void CreatePizza(int pizzaID, string name, Pizza.PizzaSize size, Pizza.PizzaDough dough,Pizza.PizzaSauce sauce, ObservableCollection<Topping> toppings, decimal price)
         {
             if (PizzaList.FirstOrDefault(x => x.PizzaID == pizzaID) == null || PizzaList.Count == 0)
             {
@@ -40,7 +40,7 @@ namespace Pizzaria
 
         }
         //Overrides old data with new data
-        public static void UpdatePizza(int pizzaID, string name, Pizza.PizzaSize size,Pizza.PizzaDough dough,Pizza.PizzaSauce sauce, ObservableCollection<string> toppings, decimal price)
+        public static void UpdatePizza(int pizzaID, string name, Pizza.PizzaSize size,Pizza.PizzaDough dough,Pizza.PizzaSauce sauce, ObservableCollection<Topping> toppings, decimal price)
         {
             Pizza pizza = ReadPizza(pizzaID);
             pizza.Name = name;
@@ -51,7 +51,7 @@ namespace Pizzaria
             pizza.Price = price;
         }
         //Overload version of the update, with no price
-        public static void UpdatePizza(int pizzaID, string name, Pizza.PizzaSize size, Pizza.PizzaDough dough, Pizza.PizzaSauce sauce, ObservableCollection<string> toppings)
+        public static void UpdatePizza(int pizzaID, string name, Pizza.PizzaSize size, Pizza.PizzaDough dough, Pizza.PizzaSauce sauce, ObservableCollection<Topping> toppings)
         {
             Pizza pizza = ReadPizza(pizzaID);
             pizza.Name = name;

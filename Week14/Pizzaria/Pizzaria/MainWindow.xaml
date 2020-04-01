@@ -19,26 +19,38 @@
         </Grid>
 
         <ItemsControl x:Name="icPizzaList">
-        <ItemsControl.ItemTemplate>
-            <DataTemplate>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
                     <StackPanel Margin="3,3,3,3">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding PizzaID}" FontSize="14"/>
                             <TextBlock Text=" " FontSize="14"/>
                             <TextBlock Text="{Binding Name}" FontSize="14"/>
                         </StackPanel>
-                        <ItemsControl ItemsSource="{Binding Ingredients}">
+                        <ItemsControl ItemsSource="{Binding Toppings}">
+                            <ItemsControl.ItemContainerStyle>
+                                <Style>
+                                    <Setter Property="FrameworkElement.Margin" Value="1"/>
+                                </Style>
+                            </ItemsControl.ItemContainerStyle>
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal"/>
-
+                                    <StackPanel Orientation="Horizontal">
+                                    </StackPanel>
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation ="Horizontal">
+                                        <TextBlock Text="{Binding ToppingName}"></TextBlock>
+                                        <TextBlock Text=", " ></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
                         </ItemsControl>
                         <TextBlock Text="{Binding Price}"/>
-                </StackPanel>
-            </DataTemplate>
-
+                    </StackPanel>
+                </DataTemplate>
         </ItemsControl.ItemTemplate>
     </ItemsControl>
     </StackPanel>

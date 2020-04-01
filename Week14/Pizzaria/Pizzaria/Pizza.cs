@@ -15,10 +15,10 @@ namespace Pizzaria
         public PizzaSize Size { get; set; }
         public PizzaDough Dough { get; set; }
         public PizzaSauce Sauce { get; set; }
-        public ObservableCollection<string> Toppings { get; set; }
+        public ObservableCollection<Topping> Toppings { get; set; }
 
 
-        public Pizza(int pizzaID,string name, PizzaSize size, PizzaDough dough, PizzaSauce sauce, ObservableCollection<string> toppings, decimal price)
+        public Pizza(int pizzaID,string name, PizzaSize size, PizzaDough dough, PizzaSauce sauce, ObservableCollection<Topping> toppings, decimal price)
         {
             this.PizzaID = pizzaID;
             this.Name = name;
