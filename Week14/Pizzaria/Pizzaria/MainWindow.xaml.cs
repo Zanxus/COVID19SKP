@@ -61,28 +61,32 @@ namespace Pizzaria
 
         private void Normal_Click(object sender, RoutedEventArgs e)
         {
+            ObservableCollection<Pizza> temp = PizzaController.PizzaList;
+
             if (!normalPizzaSelected)
             {
-                foreach (Pizza pizza in PizzaController.PizzaList)
+                foreach (Pizza pizza in temp)
                 {
                     PizzaController.UpdatePizza(pizza.PizzaID, Pizza.PizzaSize.Normal, pizza.Price / 2);
                 }
                 normalPizzaSelected = true;
             }
-
+            PizzaController.PizzaList = temp;
         }
 
         private void Familiy_Click(object sender, RoutedEventArgs e)
         {
+            ObservableCollection<Pizza> temp = PizzaController.PizzaList;
+
             if (normalPizzaSelected)
             {
-                foreach (Pizza pizza in PizzaController.PizzaList)
+                foreach (Pizza pizza in temp)
                 {
                     PizzaController.UpdatePizza(pizza.PizzaID, Pizza.PizzaSize.Familiy, pizza.Price * 2);
                 }
                 normalPizzaSelected = false;
             }
-
+            PizzaController.PizzaList = temp;
             
         }
     }

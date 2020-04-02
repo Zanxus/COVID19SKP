@@ -73,9 +73,5 @@ namespace Pizzaria
         {
             PizzaList.Remove(ReadPizza(pizzaID));
         }
-
-
-
-
     }
 }

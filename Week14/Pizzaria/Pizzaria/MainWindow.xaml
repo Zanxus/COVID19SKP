@@ -21,7 +21,8 @@
         <ItemsControl x:Name="icPizzaList">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Margin="3,3,3,3">
+                    <Border BorderBrush="Black" BorderThickness="1">
+                    <StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding PizzaID}" FontSize="14"/>
                             <TextBlock Text=" " FontSize="14"/>
@@ -49,10 +50,13 @@
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
                         <TextBlock Text="{Binding Price}"/>
+                        <Button Content="+" Width="20" Margin="750,0,0,0"/>
                     </StackPanel>
+                    </Border>
                 </DataTemplate>
         </ItemsControl.ItemTemplate>
     </ItemsControl>
+        
     </StackPanel>
     
 

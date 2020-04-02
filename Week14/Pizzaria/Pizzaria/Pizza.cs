@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Pizzaria
 {
-    public class Pizza
+    public class Pizza : IOrderable
     {
         public int PizzaID { get; set; }
         public string Name { get; set; }
