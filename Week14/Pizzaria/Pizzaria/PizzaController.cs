@@ -26,6 +26,18 @@ namespace Pizzaria
             }
             
         }
+        public static void CreatePizza(int pizzaID, string name, Pizza.PizzaSize size, Pizza.PizzaDough dough, Pizza.PizzaSauce sauce)
+        {
+            if (PizzaList.FirstOrDefault(x => x.PizzaID == pizzaID) == null || PizzaList.Count == 0)
+            {
+                PizzaList.Add(new Pizza(pizzaID, name, size, dough, sauce));
+            }
+            else
+            {
+                throw new Exception("Pizza with that ID already exists");
+            }
+
+        }
         //Reads a Pizza by ID
         public static Pizza ReadPizza(int pizzaID)
         {
@@ -39,6 +51,21 @@ namespace Pizzaria
             }
 
         }
+
+        //returns the index of the Pizza instead of the object
+        public static int ReadPizzaByIndex(int pizzaID)
+        {
+            if (PizzaList.First(x => x.PizzaID == pizzaID) == null)
+            {
+                throw new Exception("Pizza with that ID doesn't exists");
+            }
+            else
+            {
+                return PizzaList.IndexOf(ReadPizza(pizzaID));
+            }
+
+        }
+
         //Overrides old data with new data
         public static void UpdatePizza(int pizzaID, string name, Pizza.PizzaSize size,Pizza.PizzaDough dough,Pizza.PizzaSauce sauce, ObservableCollection<Topping> toppings, decimal price)
         {
@@ -62,11 +89,8 @@ namespace Pizzaria
         }
         public static void UpdatePizza(int pizzaID, Pizza.PizzaSize size, decimal price)
         {
-            Pizza pizza = ReadPizza(pizzaID);
-            pizza.Size = size;
-            pizza.Price = price;
-
-            PizzaList.Add(pizza);
+            ReadPizza(pizzaID).Size = size;
+            ReadPizza(pizzaID).Price = price;
         }
         //Removes a Pizza by ID
         public static void RemovePizza(int pizzaID)

@@ -28,7 +28,7 @@ namespace Pizzaria
         public MainWindow()
         {
             worker.DoWork += Worker_DoWork;
-            worker.RunWorkerAsync(100);
+            worker.RunWorkerAsync(1000);
             InitializeComponent();
 
             //Normal Test Pizzas

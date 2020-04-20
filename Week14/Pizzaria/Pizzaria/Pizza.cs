@@ -29,6 +29,15 @@ namespace Pizzaria
             this.Price = price;
         }
 
+        public Pizza(int pizzaID, string name, PizzaSize size, PizzaDough dough, PizzaSauce sauce)
+        {
+            PizzaID = pizzaID;
+            Name = name;
+            Size = size;
+            Dough = dough;
+            Sauce = sauce;
+        }
+
         public enum PizzaSize
         {
             Normal = 1,Familiy
