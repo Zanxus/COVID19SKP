@@ -72,6 +72,8 @@ namespace Pizzaria
                 normalPizzaSelected = true;
             }
             PizzaController.PizzaList = temp;
+            icPizzaList.ItemsSource = null;
+            icPizzaList.ItemsSource = temp;
         }
 
         private void Familiy_Click(object sender, RoutedEventArgs e)
@@ -87,7 +89,8 @@ namespace Pizzaria
                 normalPizzaSelected = false;
             }
             PizzaController.PizzaList = temp;
-            
+            icPizzaList.ItemsSource = null;
+            icPizzaList.ItemsSource = temp;
         }
     }
 }
