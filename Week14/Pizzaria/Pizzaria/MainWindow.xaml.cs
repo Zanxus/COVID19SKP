@@ -92,5 +92,17 @@ namespace Pizzaria
             icPizzaList.ItemsSource = null;
             icPizzaList.ItemsSource = temp;
         }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            e.
+            Button button = (Button)e.Source;
+            StackPanel panel = (StackPanel)button.Parent;
+            panel.
+            UIElementCollection ts = panel.Children;
+            
+            
+            int test;
+        }
     }
 }

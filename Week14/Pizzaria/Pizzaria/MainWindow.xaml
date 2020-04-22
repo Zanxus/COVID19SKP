@@ -50,7 +50,7 @@
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
                         <TextBlock Text="{Binding Price}"/>
-                        <Button Content="+" Width="20" Margin="750,0,0,0"/>
+                        <Button Content="+" Width="20" Margin="750,0,0,0" Click="Add_Click"/>
                     </StackPanel>
                     </Border>
                 </DataTemplate>
