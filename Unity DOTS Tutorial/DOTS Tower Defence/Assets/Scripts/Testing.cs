@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Testing : MonoBehaviour
 {
-    private Grid grid;
+    private Grid<bool> grid;
     // Start is called before the first frame update
     void Start()
     {
-        grid = new Grid(10, 10, 10f, new Vector3(0,0));
+        grid = new Grid<bool>(10, 10, 10f, new Vector3(0,0), () => new bool());
     }
 
     // Update is called once per frame
@@ -16,7 +16,7 @@ public class Testing : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            grid.SetValue(UtilsClass.GetMouseWorldPosition(),10);
+            grid.SetValue(UtilsClass.GetMouseWorldPosition(),true);
         }
 
         if (Input.GetMouseButtonDown(1))
