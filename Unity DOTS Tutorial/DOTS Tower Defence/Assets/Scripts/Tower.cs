@@ -11,6 +11,15 @@ public class Tower : MonoBehaviour, IPlaceable
         projectileShootFromPosition = transform.Find("ProjectileShootFromPosition").position;
     }
 
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Click");
+            Projectile.Create(UtilsClass.GetMouseWorldPosition());
+        }
+    }
+
     public void Place()
     {
         

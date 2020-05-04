@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField]
-    public static Transform pfProjectile;
-    private static void Create()
+    
+    public static void Create(Vector3 spawnPosition)
     {
-        Instantiate(pfProjectile);
+        Instantiate(GameAssets.Instance.pfProjectile, spawnPosition ,Quaternion.identity);
     }
 }
