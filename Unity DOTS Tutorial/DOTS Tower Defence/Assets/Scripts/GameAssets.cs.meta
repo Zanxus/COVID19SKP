@@ -3,7 +3,9 @@ guid: fa60fd8b4fe363d40b960214bc9734ea
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - pfProjectile: {fileID: 7172345822439523258, guid: a4481ef5bdf835f488bd7cd12957f6b6,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
