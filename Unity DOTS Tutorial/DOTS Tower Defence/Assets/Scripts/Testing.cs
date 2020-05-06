@@ -23,5 +23,6 @@ public class Testing : MonoBehaviour
         {
             Debug.Log(grid.GetValue(UtilsClass.GetMouseWorldPosition()));
         }
+        //Debug.Log(UtilsClass.GetMouseWorldPosition());
     }
 }
