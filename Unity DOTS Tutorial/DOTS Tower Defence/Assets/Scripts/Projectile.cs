@@ -25,6 +25,9 @@ public class Projectile : MonoBehaviour
         float moveSpeed = 20f;
         transform.position += moveDirection * moveSpeed * Time.deltaTime;
 
+        float angle = UtilsClass.GetAngleFromVectorFloat(moveDirection);
+        transform.eulerAngles = new Vector3(0, 0, angle);
+
         float destroySelfDistance = 1f;
         if (Vector3.Distance(transform.position,targetPosition)< destroySelfDistance)
         {
